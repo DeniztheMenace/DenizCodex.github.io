@@ -27,30 +27,48 @@ export class Header {
     this.fontDecBtn = document.getElementById('btn-font-dec');
     this.fontIncBtn = document.getElementById('btn-font-inc');
     
+    // Mobile Navigation
+    this.mobileMenuBtn = document.getElementById('btn-mobile-menu');
+    this.mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+    this.mobileNavEl = document.getElementById('mobile-categories-nav-list');
+    
     this.init();
   }
 
   init() {
+    // Mobile menu toggle
+    if (this.mobileMenuBtn) {
+      this.mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.toggleMobileMenu();
+      });
+    }
+
     // Dropdown toggles
     this.bookmarksToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.bookmarksDropdown.classList.toggle('hidden');
       this.settingsDropdown.classList.add('hidden');
+      this.closeMobileMenu();
     });
 
     this.settingsToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.settingsDropdown.classList.toggle('hidden');
       this.bookmarksDropdown.classList.add('hidden');
+      this.closeMobileMenu();
     });
 
-    // Close dropdowns on outside clicks
+    // Close dropdowns & mobile drawer on outside clicks
     document.addEventListener('click', (e) => {
       if (!this.bookmarksDropdown.contains(e.target) && !this.bookmarksToggleBtn.contains(e.target)) {
         this.bookmarksDropdown.classList.add('hidden');
       }
       if (!this.settingsDropdown.contains(e.target) && !this.settingsToggleBtn.contains(e.target)) {
         this.settingsDropdown.classList.add('hidden');
+      }
+      if (this.mobileNavDrawer && !this.mobileNavDrawer.contains(e.target) && !this.mobileMenuBtn.contains(e.target)) {
+        this.closeMobileMenu();
       }
     });
 
@@ -105,11 +123,35 @@ export class Header {
     }
   }
 
+  toggleMobileMenu() {
+    if (!this.mobileNavDrawer) return;
+    const isHidden = this.mobileNavDrawer.classList.contains('hidden');
+    if (isHidden) {
+      this.mobileNavDrawer.classList.remove('hidden');
+      this.bookmarksDropdown.classList.add('hidden');
+      this.settingsDropdown.classList.add('hidden');
+      if (this.mobileMenuBtn) this.mobileMenuBtn.classList.add('active');
+    } else {
+      this.closeMobileMenu();
+    }
+  }
+
+  closeMobileMenu() {
+    if (this.mobileNavDrawer) {
+      this.mobileNavDrawer.classList.add('hidden');
+    }
+    if (this.mobileMenuBtn) {
+      this.mobileMenuBtn.classList.remove('active');
+    }
+  }
+
   renderCategories(categories, activeCategoryId) {
     this.navEl.innerHTML = '';
+    if (this.mobileNavEl) this.mobileNavEl.innerHTML = '';
     
-    // Add dynamic links
+    // Add dynamic links to desktop and mobile nav
     categories.forEach(cat => {
+      // Desktop link
       const li = document.createElement('li');
       if (cat.id === activeCategoryId) {
         li.className = 'active';
@@ -117,12 +159,27 @@ export class Header {
       
       const a = document.createElement('a');
       a.href = `#/category/${cat.id}`;
-      a.innerHTML = `
-        <span>${cat.name}</span>
-      `;
-      
+      a.innerHTML = `<span>${cat.name}</span>`;
       li.appendChild(a);
       this.navEl.appendChild(li);
+
+      // Mobile link
+      if (this.mobileNavEl) {
+        const mLi = document.createElement('li');
+        if (cat.id === activeCategoryId) {
+          mLi.className = 'active';
+        }
+        const mA = document.createElement('a');
+        mA.href = `#/category/${cat.id}`;
+        mA.className = 'mobile-nav-link';
+        mA.innerHTML = `
+          <i data-lucide="${cat.icon || 'book-open'}" class="mobile-nav-icon"></i>
+          <span class="mobile-nav-text">${cat.name}</span>
+        `;
+        mA.addEventListener('click', () => this.closeMobileMenu());
+        mLi.appendChild(mA);
+        this.mobileNavEl.appendChild(mLi);
+      }
     });
     
     if (window.lucide) {

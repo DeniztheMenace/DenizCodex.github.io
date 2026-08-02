@@ -236,12 +236,23 @@ class CodexApp {
         </div>
       `;
 
-      // For single-article years, clicking the dot navigates directly
+      // Support click/tap on timeline points for both single and multi-entry years
       container.querySelectorAll('.tl-point').forEach(el => {
         const links = el.querySelectorAll('.tl-preview-row');
         if (links.length === 1) {
-          el.addEventListener('click', () => {
-            window.location.hash = links[0].getAttribute('href');
+          el.addEventListener('click', (e) => {
+            if (!e.target.closest('.tl-preview-row')) {
+              window.location.hash = links[0].getAttribute('href');
+            }
+          });
+        } else if (links.length > 1) {
+          el.addEventListener('click', (e) => {
+            // Toggle active class on tap for mobile devices
+            if (!e.target.closest('.tl-preview-row')) {
+              const wasActive = el.classList.contains('active');
+              container.querySelectorAll('.tl-point.active').forEach(p => p.classList.remove('active'));
+              if (!wasActive) el.classList.add('active');
+            }
           });
         }
       });

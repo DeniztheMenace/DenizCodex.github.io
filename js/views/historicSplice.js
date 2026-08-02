@@ -103,17 +103,28 @@ export function renderHistoricSplice(app, article, targetScroll) {
 
         // INTERACTIONS:
         
-        // Hover Hotspot -> Highlight Card
+        // Hover Hotspot -> Highlight Card (desktop)
         dot.addEventListener('mouseenter', () => activate(anno.id));
         dot.addEventListener('mouseleave', () => deactivate(anno.id));
 
-        // Hover Card -> Highlight Hotspot
+        // Hover Card -> Highlight Hotspot (desktop)
         card.addEventListener('mouseenter', () => activate(anno.id));
         card.addEventListener('mouseleave', () => deactivate(anno.id));
 
-        // Click Hotspot -> Scroll Card into viewport
-        dot.addEventListener('click', () => {
+        // Click/Tap Hotspot -> Activate & Scroll Card into viewport (mobile & desktop)
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Deactivate all others first on tap
+          data.annotations.forEach(a => deactivate(a.id));
+          activate(anno.id);
           card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Click/Tap Card -> Activate
+        card.addEventListener('click', (e) => {
+          e.stopPropagation();
+          data.annotations.forEach(a => deactivate(a.id));
+          activate(anno.id);
         });
       });
 
