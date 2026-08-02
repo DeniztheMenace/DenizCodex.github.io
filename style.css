@@ -282,11 +282,12 @@ body.inkwell-theme .search-box input:focus {
 }
 
 .mobile-menu-btn {
-  display: none;
+  display: none !important;
 }
 
-/* Mobile Navigation Drawer */
+/* Mobile Navigation Drawer (hidden on desktop) */
 .mobile-nav-drawer {
+  display: none !important;
   position: absolute;
   top: var(--header-height);
   left: 0;
@@ -1518,7 +1519,15 @@ li {
   }
 
   .mobile-menu-btn {
-    display: flex;
+    display: flex !important;
+  }
+
+  .mobile-nav-drawer {
+    display: block !important;
+  }
+
+  .mobile-nav-drawer.hidden {
+    display: none !important;
   }
 
   .header-utilities {
