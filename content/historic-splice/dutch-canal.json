@@ -1,0 +1,21 @@
+{
+  "image": "assets/Hoorn-Final.png",
+  "intro": "De Doelenkade in Hoorn, in summer. Oil on panel, 53.4 x 65.3 cm, signed in full and with monogram at the lower right, and dated 1875. Photo taken 23-04-2026.",
+  "coordinates": "52.639241, 5.065396",
+  "annotations": [
+    {
+      "id": "doelenkade-architecture",
+      "title": "Gevelsteen",
+      "text": "This 17th-century building features several notable gable stones. The upper frieze displays Hoorn's coat of arms supported by a unicorn, a legendary medieval creature said to be tamed only by a maiden. The lower frieze holds a 1616 stone inscribed 'Inden Ostervarer', depicting a long fluyt (lange fluit). Ostervarers were Baltic trade vessels that carried Dutch goods like herring and salt northeast, returning with grain and beer. First developed in Hoorn in 1595 by merchant Pieter Jansz. Liorne, the fluyt (fluitschip) was an unarmored, lightweight ship with a narrow hull, shallow draft, and simple rigging. These design features allowed for easy loading in shallow harbors and required only a small crew. Because Northern European trade routes posed little threat of piracy, these economical vessels were particularly popular among pacifist Mennonite captains, who often operated them as family businesses. The fluyt ultimately became the most widely built European merchant ship of the 17th and 18th centuries.",
+      "x": 57,
+      "y": 65
+    },
+    {
+      "id": "church-spire",
+      "title": "Hoofdtoren",
+      "text": "De Hoofdtoren is one of the last remaining defense works in Hoorn, North Holland. Named after the nearby Houten Hoofd pier built in 1464, the tower was constructed from Gobertange limestone and brick in 1532. It lost its defensive function in 1614 when it became the headquarters of the Nordic Company. Following a lightning strike and devastating fire in 1632, the tower was completely rebuilt, later gaining its top belfry in 1651, crafted in the style of Amsterdam's Zuiderkerk tower. Since 1968, the historic building has operated as a restaurant.",
+      "x": 4,
+      "y": 68
+    }
+  ]
+}
