@@ -15,7 +15,16 @@
     "title": "Sisu: The Finnish Spirit of Courage",
     "date": "August 7, 2026",
     "author": "Deniz",
-    "summary": "An exploration of the Winter War, Simo Häyhä 'The White Death', and the psychological concept of Sisu—extraordinary determination in the face of impossible odds.",
+    "summary": "An exploration of the Winter War, Simo Häyhä 'The White Death', and the psychological concept of Sisu - extraordinary determination in the face of impossible odds.",
     "contentFile": "content/thinktank/sisu-the-finnish-spirit.md"
+  },
+  {
+    "id": "architecture-of-mercy",
+    "category": "thinktank",
+    "title": "The Architecture of Mercy: Radical Benevolence in Central Anatolia",
+    "date": "August 8, 2026",
+    "author": "Deniz",
+    "summary": "An exploration of Gönül, Central Anatolian troubadour philosophy, and the bittersweet ethics of radical non-retaliation in the steppes of Kırşehir.",
+    "contentFile": "content/thinktank/architecture-of-mercy.md"
   }
 ]
