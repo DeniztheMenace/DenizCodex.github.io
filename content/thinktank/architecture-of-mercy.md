@@ -27,11 +27,14 @@ Why did this culture place such weight on non-retaliation? The answer lies once 
 
 *Translation:*
 
-> *"If you have broken a single heart / The prayer you perform is no prayer at all / Even the seventy-two nations of the world / Cannot wash your hands and face clean."*
+> *"If you have broken a single heart* 
+> *The prayer you perform is no prayer at all* 
+> *Even the seventy-two nations of the world* 
+> *Can't wash your hands and face clean."*
 
 In Central Anatolia, poetry and philosophy were never locked away in scholastic books. This sacred reverence for the heart was broadcast across the steppe through the wood and wire of the *bağlama* (*saz*). Whether in the satirical verses of Seyrani or the tender *bozlak* laments of modern masters like Neşet Ertaş, music was a ritual of unburdening, teaching that the highest courage is remaining soft in a world that demands you harden.
 
-![Earliest memories driving through Anatolian steppes with my grandfather listening to saz.](assets/renault-steppe.jpg)
+![My earliest memories are from driving through Anatolian steppes with my grandfather listening to saz. Picture from the movie "Once Upon a Time in Anatolia" (recommend)](assets/renault-steppe.jpg)
 
 ## The Shadow Side: Sanctified Self-Erasure?
 
