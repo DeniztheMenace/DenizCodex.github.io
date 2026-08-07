@@ -103,14 +103,27 @@ export class Header {
   }
 
   adjustFontSize(direction) {
-    let currentStr = getComputedStyle(document.documentElement).getPropertyValue('--font-base-size');
-    let currentSize = parseFloat(currentStr);
-    if (isNaN(currentSize)) {
-      currentSize = 20;
+    const computedStr = getComputedStyle(document.documentElement).fontSize || getComputedStyle(document.documentElement).getPropertyValue('--font-base-size');
+    let currentSize = parseFloat(computedStr);
+    if (isNaN(currentSize) || currentSize <= 0) {
+      currentSize = window.innerWidth <= 480 ? 17 : 20;
     }
-    const newSize = Math.max(14, Math.min(26, currentSize + direction));
-    document.documentElement.style.setProperty('--font-base-size', `${newSize}px`);
-    localStorage.setItem('codex-font-size', `${newSize}px`);
+    const step = 1.5;
+    let newSize = currentSize + (direction * step);
+    newSize = Math.max(13, Math.min(28, Math.round(newSize * 2) / 2));
+    this.setFontSize(newSize);
+  }
+
+  setFontSize(sizePx) {
+    const sizeStr = `${sizePx}px`;
+    document.documentElement.style.setProperty('--font-base-size', sizeStr);
+    document.documentElement.style.fontSize = sizeStr;
+    localStorage.setItem('codex-font-size', sizeStr);
+    
+    const indicator = document.getElementById('font-size-indicator');
+    if (indicator) {
+      indicator.innerText = sizeStr;
+    }
   }
 
   loadPreferences() {
@@ -119,7 +132,15 @@ export class Header {
     
     const savedSize = localStorage.getItem('codex-font-size');
     if (savedSize) {
-      document.documentElement.style.setProperty('--font-base-size', savedSize);
+      const parsed = parseFloat(savedSize);
+      if (!isNaN(parsed)) {
+        this.setFontSize(parsed);
+      } else {
+        this.setFontSize(20);
+      }
+    } else {
+      const defaultSize = window.innerWidth <= 480 ? 17 : 20;
+      this.setFontSize(defaultSize);
     }
   }
 

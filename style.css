@@ -65,9 +65,13 @@ body.inkwell-theme {
   padding: 0;
 }
 
+html {
+  font-size: var(--font-base-size, 20px);
+}
+
 body {
   font-family: var(--font-body);
-  font-size: var(--font-base-size);
+  font-size: 1rem;
   line-height: var(--line-height-base);
   color: var(--color-text);
   background-color: var(--bg-desk);
@@ -523,12 +527,13 @@ body.inkwell-theme .theme-btn {
 
 .font-controls {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 6px;
 }
 
 .font-btn {
-  width: 32px;
-  height: 28px;
+  width: 36px;
+  height: 32px;
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid var(--border-antique);
   color: var(--color-text);
@@ -537,16 +542,30 @@ body.inkwell-theme .theme-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  transition: border-color 0.2s;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 body.inkwell-theme .font-btn {
   background: rgba(0,0,0,0.3);
 }
 
-.font-btn:hover {
+.font-btn:hover, .font-btn:active {
   border-color: var(--color-gold);
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--color-gold-bright);
+}
+
+.font-size-indicator {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-width: 38px;
+  text-align: center;
 }
 
 /* Reading Progress Indicator */
@@ -1533,10 +1552,6 @@ figcaption {
 
 /* 4. Small Mobile Viewports (Phones <= 480px) */
 @media (max-width: 480px) {
-  :root {
-    --font-base-size: 16px;
-  }
-
   .header-inner {
     padding: 0 0.6rem;
     gap: 0.4rem;
