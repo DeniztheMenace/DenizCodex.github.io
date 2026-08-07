@@ -2,15 +2,15 @@
   {
     "id": "historic-splice",
     "name": "Historic Splice",
-    "icon": "image",
+    "icon": "layers",
     "layout": "splice",
-    "description": "Paintings from the past spliced with the present"
+    "description": "Paintings from the past spliced with the present."
   },
   {
     "id": "thinktank",
     "name": "Thinktank",
-    "icon": "book-open",
+    "icon": "feather",
     "layout": "scholarly",
-    "description": "Manuscript thoughts, philosophical investigations, and scientific essays written by the author, complete with margin notes and structured layouts."
+    "description": "Manuscript thoughts, investigations, and essays."
   }
 ]

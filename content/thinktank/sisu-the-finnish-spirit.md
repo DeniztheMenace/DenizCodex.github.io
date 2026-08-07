@@ -34,7 +34,7 @@ William R. Aho, professor emeritus of sociology at Rhodes College, expressed his
 
 Thus, attempts were made by researchers attempting to shed light on this concept in a scientific manner. Various paths of research led to the introduction of sisu as psychological power potential during the 3rd World Congress on Positive Psychology in Los Angeles in 2013[^1]. In this study, sisu is seen as a *"psychological competence that enables extraordinary action to overcome a mentally or physically challenging situation"*.
 
-More interestingly, sisu is described as something that contributes to what is called the **action mindset**—a consistent approach toward challenges that at first seem to exceed our capacities. So, with that, it exceeds the boundaries of being only a cultural abstraction and becomes a cognitive muscle that can be trained and strengthened. 
+More interestingly, sisu is described as something that contributes to what is called the **action mindset**, a consistent approach toward challenges that at first seem to exceed our capacities. So, with that, it exceeds the boundaries of being only a cultural abstraction and becomes a cognitive muscle that can be trained and strengthened. 
 
 ## Cultivating Sisu in Everyday Life
 
