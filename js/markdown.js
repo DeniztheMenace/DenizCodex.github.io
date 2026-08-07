@@ -55,6 +55,19 @@ export function parseMarkdown(markdown) {
       continue;
     }
 
+    // Images
+    if (line.startsWith('![')) {
+      const match = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (match) {
+        if (inList) { html += '</ul>\n'; inList = false; }
+        if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+        const alt = match[1];
+        const src = match[2];
+        html += `<figure class="article-figure"><img src="${src}" alt="${alt}" class="article-image" />${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>\n`;
+        continue;
+      }
+    }
+
     // Blockquotes
     if (line.startsWith('> ')) {
       if (!inBlockquote) {

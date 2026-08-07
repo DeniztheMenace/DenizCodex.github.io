@@ -2,7 +2,6 @@ import { Header } from './components/header.js';
 import { Reader } from './components/reader.js';
 import { renderThinkTank } from './views/thinktank.js';
 import { renderHistoricSplice } from './views/historicSplice.js';
-import { renderSnippets } from './views/snippets.js';
 
 class CodexApp {
   constructor() {
@@ -317,8 +316,6 @@ class CodexApp {
       renderThinkTank(this, article, scrollPercent);
     } else if (article.category === 'historic-splice') {
       renderHistoricSplice(this, article, scrollPercent);
-    } else if (article.category === 'snippets') {
-      renderSnippets(this, article, scrollPercent);
     }
   }
 

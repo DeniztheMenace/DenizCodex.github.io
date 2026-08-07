@@ -1145,6 +1145,30 @@ li {
   margin-top: 8px;
 }
 
+/* Article Figures & Images */
+.article-figure {
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border-antique);
+  box-shadow: 0 4px 18px var(--shadow-color);
+  display: inline-block;
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: center;
+}
+
 .add-bookmark-container {
   display: flex;
   justify-content: center;
@@ -1313,111 +1337,6 @@ li {
 
 
 /* ==========================================================================
-   SNIPPETS: FULL-WIDTH MASONRY Fact Grid
-   ========================================================================== */
-.snippets-grid-container {
-  width: 100%;
-}
-
-.snippets-grid-layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* Card wrappers and rotations */
-.snippet-card-wrapper {
-  perspective: 1000px;
-  height: 250px;
-  cursor: pointer;
-}
-
-.snippet-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-}
-
-.snippet-card-wrapper:hover .snippet-card {
-  transform: translateY(-5px);
-}
-
-.snippet-card-wrapper.flipped .snippet-card {
-  transform: rotateY(180deg);
-}
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border: 1px solid var(--border-antique);
-  outline: 2px double var(--border-antique);
-  outline-offset: -5px;
-  border-radius: 6px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 3px 3px 12px rgba(0,0,0,0.05);
-}
-
-.card-front {
-  background-color: var(--bg-page);
-  background-image: var(--bg-page-image);
-  background-blend-mode: multiply;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.card-front i {
-  color: var(--color-gold);
-  width: 36px;
-  height: 36px;
-  margin-bottom: 15px;
-}
-
-.card-front h3 {
-  font-size: 1.2rem;
-  color: var(--color-accent);
-  margin-bottom: 5px;
-}
-
-.card-back {
-  background-color: var(--bg-page);
-  background-image: var(--bg-page-image);
-  background-blend-mode: multiply;
-  transform: rotateY(180deg);
-  font-size: 0.88rem;
-  line-height: 1.5;
-  overflow-y: auto;
-  text-align: left;
-}
-
-.card-back p {
-  text-indent: 0;
-  text-align: left;
-  margin-bottom: 0;
-  color: var(--color-text-muted);
-}
-
-.card-back .card-tag {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  margin-bottom: 8px;
-  display: block;
-}
-
-
-/* ==========================================================================
    MICRO-ANIMATIONS & GENERAL CLASSES
    ========================================================================== */
 .fade-in {
@@ -1581,11 +1500,6 @@ li {
     gap: 1.2rem;
   }
 
-  .snippets-grid-layout {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 1.2rem;
-  }
-
   .splice-container {
     flex-direction: column;
     gap: 1.8rem;
@@ -1687,17 +1601,6 @@ li {
     padding: 1.2rem;
   }
 
-  .snippets-grid-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .snippet-card-wrapper {
-    height: 220px;
-  }
-
-  .card-face {
-    padding: 1.1rem;
-  }
 
   .splice-annotation {
     padding: 1.1rem;
