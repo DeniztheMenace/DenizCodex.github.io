@@ -8,12 +8,7 @@ In Anatolian folk poetry and music, carried by roving *aşıks* (troubadours), a
 
 To understand Central Anatolian benevolence, one must understand the untranslatable concept of *Gönül* (the spiritual heart). In Anatolian thought, the *gönül* is not merely the seat of emotions; it is the sanctuary of the Divine (the House of God). Because God resides in every human heart according to this philosophy, injuring another person's dignity or causing them grief is considered the greatest possible transgression, worse than destroying a physical temple. This is the foundation of an ethos where ethical perfection means refusing to transmit pain, no matter how much pain you receive.
 
-## The Foundation Stones of Anatolian Mercy
-
-- **Hacı Bektaş Veli** (13th Century): Set the cornerstone of Anatolian humanism with the maxim, *"İncinsen de incitme"* ("Even if you are hurt, do not hurt.")
-- **Yunus Emre** (13th-14th Century): Demanded a total surrender of the retaliatory ego: *"Dövene elsiz gerek / Sövene dilsiz gerek"* ("To the one who strikes you, be without hands; to the one who curses you, be without tongue.")
-- **Aşık Paşa** (14th Century): Elevated forgiveness to spiritual alchemy, praying that whoever served him poison would be repaid with honey, and whoever dug traps in his path would walk on roses.
-- **Aşık Veysel** (20th Century): Blinded by smallpox in childhood, Veysel wrote of the earth and humanity with a radical lack of grievance, treating even betrayal as an invitation to deeper patience: *"Dost dost diye nicesine sarıldım / Benim sadık yârim kara topraktır"* ("I embraced so many calling them friend / My true faithful beloved is the black earth.")
+Aşık Veysel, blinded by smallpox in childhood, wrote of the earth and humanity with a radical lack of grievance, treating even betrayal as an invitation to deeper patience: *"Dost dost diye nicesine sarıldım, benim sadık yârim kara topraktır"* ("I embraced so many calling them friend, my true faithful beloved is the black earth.")
 
 ![Aşık Veysel, legendary troubadour of the Anatolian steppe.](assets/asik-veysel.webp)
 
@@ -24,8 +19,6 @@ Why did this culture place such weight on non-retaliation? The answer lies once 
 > *Yetmiş iki millet dahi*  
 > *Elini yüzün yumaz değil."*  
 > - Yunus Emre
-
-*Translation:*
 
 > *"If you have broken a single heart* 
 > *The prayer you perform is no prayer at all* 
@@ -42,12 +35,12 @@ Yet when I look beneath the surface, I find myself looking at a troubling philos
 
 There is a quiet, haunting doubt that shadows the Anatolian ideal: can one be so merciful to the aggressor that one becomes cruel to oneself?
 
-When poets and folk singers practiced radical non-retaliation while living at the absolute bottom of the social hierarchy (landless, poor, and often exploited), their refusal to strike back was both a spiritual halo and a terrestrial cage. By elevating endurance into almost a holy duty, the culture risked treating the suffering of the gentle as an inevitable, aesthetic virtue, rather than a wrong to be corrected. To forgive everything can sometimes mean demanding nothing for your own humanity.
+When poets and folk singers practiced radical non-retaliation while living at the absolute bottom of the social hierarchy (landless, poor, and often exploited), their refusal to strike back was both a spiritual halo and a terrestrial cage. By elevating endurance into almost a holy duty, the culture risked treating the suffering of the gentle as an inevitable, aesthetic virtue. To forgive everything can sometimes mean demanding nothing for your own humanity.
 
 ## The Bittersweet Victory of the Garip
 
-This tension is precisely why Central Anatolian folk music is drenched in *hüzün*: a heavy, resonant sorrow. The great *aşıks* did not sing triumphal hymns; they sang laments. I think that they intuitively knew the moral cost of their philosophy, and they accepted it.
+This tension is precisely why Central Anatolian folk music is drenched in *hüzün*: a heavy, resonant sorrow. The great *aşıks* did not sing triumphal hymns, they sang laments. I think that they intuitively knew the moral cost of their philosophy, and they accepted it.
 
-To live by radical benevolence is to accept a bittersweet bargain: you preserve the purity of your own *gönül*, but you inherit the bruises of the world. The Anatolian troubadours did not conquer their oppressors, nor did they rid the steppe of cruelty. Instead, they made a conscious, tragic choice: they chose to break rather than be the ones who break others.
+To live by radical benevolence is to accept a bittersweet bargain - you preserve the purity of your own *gönül*, but you inherit the bruises of the world. The Anatolian troubadours did not conquer their oppressors, nor did they rid the steppe of cruelty. Instead, they made a conscious, tragic choice: they chose to break rather than be the ones who break others.
 
-In the end, their legacy is a profound, melancholic monument to human endurance: a reminder that while refusing to echo cruelty may leave your hands empty and your heart scarred, it remains the only way to walk through a bitter world without becoming bitter yourself.
+In the end, their legacy is a profound, melancholic monument to human nature, and a reminder that while refusing to echo cruelty may leave your hands empty and your heart scarred, it might be one of the ways to walk through a bitter world without becoming bitter yourself.
