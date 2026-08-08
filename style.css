@@ -1179,6 +1179,21 @@ li {
   display: inline-block;
 }
 
+/* Image Size Modifiers */
+.article-figure.small,
+.article-image.small {
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-figure.medium,
+.article-image.medium {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 figcaption {
   margin-top: 0.75rem;
   font-family: var(--font-sans);

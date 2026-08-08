@@ -61,9 +61,25 @@ export function parseMarkdown(markdown) {
       if (match) {
         if (inList) { html += '</ul>\n'; inList = false; }
         if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
-        const alt = match[1];
-        const src = match[2];
-        html += `<figure class="article-figure"><img src="${src}" alt="${alt}" class="article-image" />${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>\n`;
+        let alt = match[1];
+        let src = match[2];
+
+        let sizeClass = '';
+        if (src.includes('#small') || alt.endsWith('|small')) {
+          sizeClass = ' small';
+          src = src.replace('#small', '');
+          alt = alt.replace('|small', '');
+        } else if (src.includes('#medium') || alt.endsWith('|medium')) {
+          sizeClass = ' medium';
+          src = src.replace('#medium', '');
+          alt = alt.replace('|medium', '');
+        } else if (src.includes('#large') || alt.endsWith('|large')) {
+          sizeClass = ' large';
+          src = src.replace('#large', '');
+          alt = alt.replace('|large', '');
+        }
+
+        html += `<figure class="article-figure${sizeClass}"><img src="${src}" alt="${alt}" class="article-image${sizeClass}" />${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>\n`;
         continue;
       }
     }
