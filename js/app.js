@@ -105,23 +105,37 @@ class CodexApp {
       const category = this.categories.find(c => c.id === art.category);
       const catName = category ? category.name : 'Log';
       const catIcon = category ? (category.icon || 'book-open') : 'feather';
+      const coverImage = art.image || 'assets/parchment-texture.png';
+      
+      const readTimeBadge = (art.category !== 'historic-splice' && art.readTime)
+        ? `<span class="card-read-time">
+             <i data-lucide="clock" class="read-time-icon"></i>
+             ${art.readTime}
+           </span>`
+        : '';
       
       activityHtml += `
         <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
-          <div class="activity-card-header">
-            <span class="card-category-tag">
-              <i data-lucide="${catIcon}" class="card-cat-icon"></i>
-              ${catName}
-            </span>
-            <span class="card-date">${art.date}</span>
+          <div class="activity-card-media">
+            <img src="${coverImage}" alt="${art.title}" class="activity-card-thumb" loading="lazy" />
+            ${readTimeBadge}
           </div>
-          <div class="activity-card-body">
-            <h3>${art.title}</h3>
-            <p>${art.summary}</p>
-          </div>
-          <div class="activity-card-footer">
-            <span class="card-author">By ${art.author}</span>
-            <span class="card-footer-link">Read Log <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+          <div class="activity-card-content">
+            <div class="activity-card-header">
+              <span class="card-category-tag">
+                <i data-lucide="${catIcon}" class="card-cat-icon"></i>
+                ${catName}
+              </span>
+              <span class="card-date">${art.date}</span>
+            </div>
+            <div class="activity-card-body">
+              <h3>${art.title}</h3>
+              <p>${art.summary}</p>
+            </div>
+            <div class="activity-card-footer">
+              <span class="card-author">By ${art.author}</span>
+              <span class="card-footer-link">Read Entry <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+            </div>
           </div>
         </div>
       `;
@@ -177,7 +191,6 @@ class CodexApp {
       <section class="landing-section fade-in">
         <div class="section-header-flex">
           <h2 class="section-title"><i data-lucide="clock"></i> Latest Activity</h2>
-          <span class="section-badge">${recentArticles.length} Archives</span>
         </div>
         <div class="activity-grid">
           ${activityHtml}
@@ -319,22 +332,47 @@ class CodexApp {
         </div>`;
     } else {
       catArticles.forEach(art => {
+        const catName = category ? category.name : 'Entry';
+        const catIcon = category ? (category.icon || 'book-open') : 'feather';
+        const coverImage = art.image || 'assets/parchment-texture.png';
+        
+        const readTimeBadge = (art.category !== 'historic-splice' && art.readTime)
+          ? `<span class="card-read-time">
+               <i data-lucide="clock" class="read-time-icon"></i>
+               ${art.readTime}
+             </span>`
+          : '';
+
         listHtml += `
-          <div class="activity-card" style="margin-bottom: 1.5rem; width: 100%;" onclick="window.location.hash='#/article/${art.id}'">
-            <div>
-              <span class="card-category-tag">${category.name}</span>
-              <h3 style="font-size: 1.4rem;">${art.title}</h3>
-              <span class="card-date">${art.date} • By ${art.author}</span>
-              <p>${art.summary}</p>
+          <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
+            <div class="activity-card-media">
+              <img src="${coverImage}" alt="${art.title}" class="activity-card-thumb" loading="lazy" />
+              ${readTimeBadge}
             </div>
-            <span class="card-footer-link" style="margin-top: 10px;">Read Log <i data-lucide="arrow-right" style="width: 14px; height: 14px; vertical-align: middle;"></i></span>
+            <div class="activity-card-content">
+              <div class="activity-card-header">
+                <span class="card-category-tag">
+                  <i data-lucide="${catIcon}" class="card-cat-icon"></i>
+                  ${catName}
+                </span>
+                <span class="card-date">${art.date}</span>
+              </div>
+              <div class="activity-card-body">
+                <h3>${art.title}</h3>
+                <p>${art.summary}</p>
+              </div>
+              <div class="activity-card-footer">
+                <span class="card-author">By ${art.author}</span>
+                <span class="card-footer-link">Read Entry <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+              </div>
+            </div>
           </div>
         `;
       });
     }
 
     container.innerHTML = `
-      <div class="readable-column fade-in">
+      <div class="fade-in">
         <header class="article-header" style="margin-bottom: 2.5rem;">
           <div style="color: var(--color-gold); font-size: 2.5rem; margin-bottom: 15px; text-align: center;">
             <i data-lucide="${category.icon}" style="width: 48px; height: 48px;"></i>
@@ -343,7 +381,7 @@ class CodexApp {
           <p class="no-indent" style="text-align: center; font-style: italic; color: var(--color-text-muted); margin-top: 5px;">${category.description}</p>
         </header>
 
-        <section class="category-index-list" style="margin-top: 2rem;">
+        <section class="activity-grid" style="margin-top: 2rem;">
           ${listHtml}
         </section>
       </div>
@@ -387,35 +425,59 @@ class CodexApp {
 
     let resultsHtml = '';
     if (matches.length === 0) {
-      resultsHtml = '<p style="text-align: center; font-style: italic; color: var(--color-text-muted); margin-top: 2rem;">No logs matched your search parameters.</p>';
+      resultsHtml = '<p style="text-align: center; font-style: italic; color: var(--color-text-muted); margin-top: 2rem;">No entries matched your search parameters.</p>';
     } else {
       matches.forEach(art => {
         const category = this.categories.find(c => c.id === art.category);
-        const catName = category ? category.name : 'Log';
+        const catName = category ? category.name : 'Entry';
+        const catIcon = category ? (category.icon || 'book-open') : 'feather';
+        const coverImage = art.image || 'assets/parchment-texture.png';
+        
+        const readTimeBadge = (art.category !== 'historic-splice' && art.readTime)
+          ? `<span class="card-read-time">
+               <i data-lucide="clock" class="read-time-icon"></i>
+               ${art.readTime}
+             </span>`
+          : '';
+
         resultsHtml += `
-          <div class="activity-card" style="margin-bottom: 1.5rem; width: 100%;" onclick="window.location.hash='#/article/${art.id}'">
-            <div>
-              <span class="card-category-tag">${catName}</span>
-              <h3>${art.title}</h3>
-              <span class="card-date">${art.date}</span>
-              <p>${art.summary}</p>
+          <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
+            <div class="activity-card-media">
+              <img src="${coverImage}" alt="${art.title}" class="activity-card-thumb" loading="lazy" />
+              ${readTimeBadge}
             </div>
-            <span class="card-footer-link" style="margin-top: 10px;">Read Log <i data-lucide="arrow-right" style="width: 14px; height: 14px; vertical-align: middle;"></i></span>
+            <div class="activity-card-content">
+              <div class="activity-card-header">
+                <span class="card-category-tag">
+                  <i data-lucide="${catIcon}" class="card-cat-icon"></i>
+                  ${catName}
+                </span>
+                <span class="card-date">${art.date}</span>
+              </div>
+              <div class="activity-card-body">
+                <h3>${art.title}</h3>
+                <p>${art.summary}</p>
+              </div>
+              <div class="activity-card-footer">
+                <span class="card-author">By ${art.author}</span>
+                <span class="card-footer-link">Read Entry <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+              </div>
+            </div>
           </div>
         `;
       });
     }
 
     container.innerHTML = `
-      <div class="readable-column fade-in">
-        <header class="article-header">
+      <div class="fade-in">
+        <header class="article-header" style="margin-bottom: 2.5rem;">
           <h1>Search the Archives</h1>
           <p class="no-indent" style="text-align: center; font-style: italic; color: var(--color-text-muted); margin-top: 5px;">
-            Search Query: "${query}" • Found ${matches.length} matches.
+            Search Query: "${query}" • Found ${matches.length} ${matches.length === 1 ? 'match' : 'matches'}.
           </p>
         </header>
 
-        <section class="search-results-feed" style="margin-top: 2rem;">
+        <section class="activity-grid" style="margin-top: 2rem;">
           ${resultsHtml}
         </section>
       </div>

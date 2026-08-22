@@ -7,6 +7,7 @@
     "year": 1875,
     "author": "Deniz",
     "summary": "De Doelenkade in Hoorn, bij zomer. Oil on panel, 53.4 x 65.3 cm, signed in full and with monogram at the lower right, and dated 1875. Photo taken 23-04-2026.",
+    "image": "assets/Hoorn-Final.png",
     "contentFile": "content/historic-splice/splice-hoorn.json"
   },
   {
@@ -17,6 +18,7 @@
     "year": 1670,
     "author": "Deniz",
     "summary": "Het Muiderslot vanuit het noordoosten. Oil on canvas, 52 x 62 cm. Photo taken 07-02-2026.",
+    "image": "assets/Muiderslot-Final.png",
     "contentFile": "content/historic-splice/splice-muiderslot.json"
   },
   {
@@ -26,6 +28,8 @@
     "date": "August 7, 2026",
     "author": "Deniz",
     "summary": "An exploration of the Winter War, Simo Häyhä 'The White Death', and the psychological concept of Sisu - extraordinary determination in the face of impossible odds.",
+    "image": "assets/sisu-cover-hd.png",
+    "readTime": "6 min read",
     "contentFile": "content/thinktank/sisu-the-finnish-spirit.md"
   },
   {
@@ -35,6 +39,8 @@
     "date": "August 8, 2026",
     "author": "Deniz",
     "summary": "An exploration of Gönül, Central Anatolian troubadour philosophy, and the ethics of radical non-retaliation from the steppes.",
+    "image": "assets/anatolian-mercy-cover-hd.png",
+    "readTime": "6 min read",
     "contentFile": "content/thinktank/architecture-of-mercy.md"
   },
   {
@@ -44,6 +50,8 @@
     "date": "August 22, 2026",
     "author": "Deniz",
     "summary": "Reflection on the black box of consciousness.",
+    "image": "assets/pogona-cover-hd.png",
+    "readTime": "4 min read",
     "contentFile": "content/thinktank/pogona-echoes-in-scales.md"
   },
   {
@@ -53,6 +61,8 @@
     "date": "August 22, 2026",
     "author": "Deniz",
     "summary": "From Bletchley Park indexers to modern AI transformation: how technology leaders shift from managing data architecture to collective meaning-making.",
+    "image": "assets/meaning-maker-cover-hd.png",
+    "readTime": "7 min read",
     "contentFile": "content/stem/the-meaning-maker-redefining-the-cio.md"
   },
   {
@@ -62,6 +72,8 @@
     "date": "August 22, 2026",
     "author": "Deniz",
     "summary": "Van autotelefoons tot alles verbonden: een reis door de evolutie van mobiele netwerken, van 0G tot 6G.",
+    "image": "assets/wireless-history-cover-hd.png",
+    "readTime": "10 min read",
     "contentFile": "content/stem/de-geschiedenis-van-draadloze-communicatie.md"
   }
 ]

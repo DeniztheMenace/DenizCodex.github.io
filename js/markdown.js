@@ -155,8 +155,7 @@ export function parseMarkdown(markdown) {
     // Footnote references: [^1]
     output = output.replace(/\[\^([^\]]+)\]/g, (match, id) => {
       const note = footnotes[id] ? footnotes[id].replace(/"/g, '&quot;') : '';
-      return `<a href="#fn-${id}" id="fnref-${id}" class="footnote-ref" title="${note}">${id}</a>` +
-             `<span class="sidenote">${note}</span>`;
+      return `<a href="#fn-${id}" id="fnref-${id}" class="footnote-ref" title="${note}">[${id}]</a>`;
     });
 
     // Links: [text](url)

@@ -149,10 +149,12 @@ body {
 .header-brand {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-decoration: none;
   cursor: pointer;
   flex-shrink: 0;
   gap: 2px;
+  height: 100%;
 }
 
 .brand-title {
@@ -171,39 +173,54 @@ body {
   font-size: 11px;
   color: var(--color-text-muted);
   letter-spacing: 0.5px;
-  margin-top: 2px;
+  margin-top: 1px;
+  line-height: 1.1;
 }
 
-/* Navigation Links */
+/* Navigation Links - Centered vertically on same axis as brand & utilities */
 .header-nav {
-  /* Nudge nav down so single-line links visually align with the
-     bottom of the two-line brand and the center of the utility buttons */
-  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-top: 0;
 }
 
 .header-nav ul {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 2.5rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav li {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .header-nav a {
   font-family: var(--font-ui);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.3px;
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .header-nav a:hover, .header-nav li.active a {
   color: var(--color-accent);
   background: none;
-  border-bottom: 2px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
 }
 
 /* Utilities Block */
@@ -211,6 +228,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  height: 100%;
 }
 
 /* Search Box */
@@ -1045,39 +1063,76 @@ li {
 .activity-card {
   background: var(--bg-card);
   border: 1px solid var(--border-antique);
-  border-radius: 8px;
-  padding: 1.6rem;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 2px 2px 12px var(--shadow-color);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 18px var(--shadow-color);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-.activity-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--color-gold);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
 .activity-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 5px 15px 30px var(--shadow-color);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px var(--shadow-color);
   border-color: var(--color-gold);
-  background: rgba(197, 160, 89, 0.06);
 }
 
-.activity-card:hover::before {
-  opacity: 1;
+.activity-card-media {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  background: var(--bg-desk);
+}
+
+.activity-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.92);
+}
+
+.activity-card:hover .activity-card-thumb {
+  transform: scale(1.06);
+  filter: brightness(1.02);
+}
+
+.card-read-time {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(12, 15, 23, 0.85);
+  backdrop-filter: blur(6px);
+  color: var(--color-gold-bright);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 169, 110, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.read-time-icon {
+  width: 11px;
+  height: 11px;
+  margin-right: 4px;
+  color: var(--color-gold);
+}
+
+.activity-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .activity-card-header {
@@ -1148,25 +1203,37 @@ li {
 
 .card-footer-link {
   font-family: var(--font-title);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--color-accent);
   display: flex;
   align-items: center;
   gap: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 700;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid var(--border-antique);
+  padding: 4px 10px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
 }
 
 .card-arrow-icon {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   transition: transform 0.2s ease;
 }
 
+.activity-card:hover .card-footer-link {
+  background: var(--color-gold);
+  color: #0c0f17;
+  border-color: var(--color-gold-bright);
+  box-shadow: 0 3px 10px rgba(200, 169, 110, 0.35);
+}
+
 .activity-card:hover .card-arrow-icon {
-  transform: translateX(5px);
-  color: var(--color-gold);
+  transform: translateX(4px);
+  color: #0c0f17;
 }
 
 /* Category cards list */
@@ -1248,16 +1315,20 @@ li {
 }
 
 .chapter-previews-container {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px dashed var(--border-antique);
-  border-radius: 6px;
-  padding: 10px 12px;
-  margin-bottom: 1.2rem;
+  background: rgba(0, 0, 0, 0.035);
+  border: 1px solid var(--border-antique);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 0.6rem;
+  margin-bottom: 1.5rem;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 body.inkwell-theme .chapter-previews-container {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(200, 169, 110, 0.18);
 }
 
 .chapter-previews-label {
@@ -1266,25 +1337,31 @@ body.inkwell-theme .chapter-previews-container {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   color: var(--color-gold);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--border-antique);
 }
 
 .chapter-previews-list {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .chapter-preview-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 6px;
-  border-radius: 4px;
-  margin-bottom: 4px;
-  transition: background 0.15s ease;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(197, 160, 89, 0.04);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
@@ -1293,17 +1370,20 @@ body.inkwell-theme .chapter-previews-container {
 }
 
 .chapter-preview-item:hover {
-  background: rgba(197, 160, 89, 0.15);
+  background: rgba(197, 160, 89, 0.16);
+  border-color: var(--border-antique);
 }
 
 .chapter-preview-title {
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.3;
   color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 90%;
+  max-width: 88%;
 }
 
 .chapter-preview-item:hover .chapter-preview-title {
@@ -1608,21 +1688,10 @@ figcaption {
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
 
-/* 1. Large Screens: Sidenotes floating in margins */
+/* 1. Large Screens: Clean spacious layout */
 @media (min-width: 1300px) {
   .sidenote {
-    display: block;
-    position: absolute;
-    right: -220px;
-    width: 180px;
-    font-size: 0.8rem;
-    line-height: 1.45;
-    color: var(--color-text-muted);
-    border-left: 2px solid var(--color-gold);
-    padding-left: 12px;
-    text-align: left;
-    text-indent: 0;
-    font-family: var(--font-body);
+    display: none !important;
   }
 }
 
