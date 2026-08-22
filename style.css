@@ -1033,10 +1033,10 @@ li {
   text-transform: uppercase;
 }
 
-/* Latest activity feed layout */
+/* Latest activity feed layout - 3 equal columns on desktop to perfectly fit 6 items in 2 full rows */
 .activity-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -1731,6 +1731,13 @@ figcaption {
     font-size: 1.3rem;
   }
   
+  /* Medium/Tablet Viewports */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .activity-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   .activity-grid {
     display: flex;
     overflow-x: auto;
