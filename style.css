@@ -10,23 +10,23 @@
   --font-ui: 'Outfit', sans-serif;
   --font-sans: 'Outfit', sans-serif;
 
-  /* Parchment (Light) Theme Variables - Clean Slate/Indigo scholarly look */
-  --bg-desk: #0a0d14;
-  --bg-desk-gradient: radial-gradient(circle, #151d2a 0%, #05070a 100%);
-  --bg-header: #f6f2e8;
+  /* Parchment (Light) Theme Variables - Warm Academic Parchment & Deep Navy */
+  --bg-desk: #e8e3d5;
+  --bg-desk-gradient: radial-gradient(circle at 50% 30%, #f4efe4 0%, #dfd8c8 100%);
+  --bg-header: rgba(246, 242, 232, 0.92);
   --bg-header-image: url('assets/parchment-texture.png');
   --bg-page: #FAF6EB;
   --bg-page-image: url('assets/parchment-texture.png');
-  --bg-card: rgba(240, 233, 218, 0.45);
+  --bg-card: rgba(242, 236, 222, 0.65);
   
-  --color-text: #222a35;
-  --color-text-muted: #576275;
-  --color-accent: #1c3b57; /* Scholarly deep indigo */
-  --color-accent-hover: #2e5980;
-  --color-gold: #b59659; /* Refined brass/bronze */
-  --color-gold-bright: #d9b877;
-  --border-antique: #dcd4c4;
-  --shadow-color: rgba(10, 15, 25, 0.25);
+  --color-text: #242c37;
+  --color-text-muted: #5e6a7c;
+  --color-accent: #1e3852; /* Deep warm navy */
+  --color-accent-hover: #2d5075;
+  --color-gold: #b89655; /* Warm antique gold */
+  --color-gold-bright: #d6b36e;
+  --border-antique: #d8cebc;
+  --shadow-color: rgba(40, 35, 25, 0.12);
   
   /* Font scale base */
   --font-base-size: 20px;
@@ -38,24 +38,24 @@
   --max-width-readable: 860px;
 }
 
-/* Inkwell (Dark) Theme Variables - Obsidian & Electric Slate */
+/* Inkwell (Dark) Theme Variables - Warm Obsidian & Warm Bronze */
 body.inkwell-theme {
-  --bg-desk: #030406;
-  --bg-desk-gradient: radial-gradient(circle, #0a0e17 0%, #010204 100%);
-  --bg-header: #121622;
+  --bg-desk: #0c0f17;
+  --bg-desk-gradient: radial-gradient(circle at 50% 30%, #161c28 0%, #080a10 100%);
+  --bg-header: rgba(18, 22, 34, 0.92);
   --bg-header-image: url('assets/inkwell-texture.png');
-  --bg-page: #151926;
+  --bg-page: #141824;
   --bg-page-image: url('assets/inkwell-texture.png');
-  --bg-card: rgba(25, 32, 48, 0.4);
+  --bg-card: rgba(24, 30, 46, 0.55);
   
-  --color-text: #dcd9d0;
-  --color-text-muted: #959da6;
-  --color-accent: #508bc0; /* Precision steel blue */
-  --color-accent-hover: #73a9db;
-  --color-gold: #a68950;
-  --color-gold-bright: #c7ab71;
-  --border-antique: #252b3a;
-  --shadow-color: rgba(0, 0, 0, 0.55);
+  --color-text: #e2ded4; /* Soft warm ivory */
+  --color-text-muted: #9ba3b0;
+  --color-accent: #6397c7; /* Soft warm sapphire blue */
+  --color-accent-hover: #82b0dd;
+  --color-gold: #c8a96e; /* Polished warm bronze */
+  --color-gold-bright: #e5c889;
+  --border-antique: #283042;
+  --shadow-color: rgba(0, 0, 0, 0.38);
 }
 
 /* Reset and Base Elements */
@@ -127,10 +127,12 @@ body {
   right: 0;
   height: var(--header-height);
   background-color: var(--bg-header);
-  box-shadow: 0 4px 15px var(--shadow-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px var(--shadow-color);
   border-bottom: 1px solid var(--border-antique);
   z-index: 1000;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .header-inner {

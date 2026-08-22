@@ -95,9 +95,11 @@ class CodexApp {
     
     const container = this.reader.pageContentEl;
     
-    // 1. Compile Latest Activity cards HTML (showing top 6 recent articles for balanced grid rows)
+    // 1. Compile Latest Activity cards HTML (showing top 6 articles sorted chronologically by publication date)
     let activityHtml = '';
-    const recentArticles = [...this.articles].reverse().slice(0, 6);
+    const recentArticles = [...this.articles]
+      .sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0))
+      .slice(0, 6);
     
     recentArticles.forEach(art => {
       const category = this.categories.find(c => c.id === art.category);
@@ -208,7 +210,9 @@ class CodexApp {
     }
 
     const container = this.reader.pageContentEl;
-    const catArticles = this.articles.filter(a => a.category === categoryId);
+    const catArticles = this.articles
+      .filter(a => a.category === categoryId)
+      .sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
 
     // ── Historic Splice: horizontal timeline ──────────────────────────
     if (categoryId === 'historic-splice') {
