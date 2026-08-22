@@ -95,9 +95,9 @@ class CodexApp {
     
     const container = this.reader.pageContentEl;
     
-    // 1. Compile Latest Activity cards HTML (showing all recent articles)
+    // 1. Compile Latest Activity cards HTML (showing top 6 recent articles for balanced grid rows)
     let activityHtml = '';
-    const recentArticles = [...this.articles].reverse();
+    const recentArticles = [...this.articles].reverse().slice(0, 6);
     
     recentArticles.forEach(art => {
       const category = this.categories.find(c => c.id === art.category);
