@@ -1,0 +1,21 @@
+{
+  "image": "assets/Muiderslot-Final.png",
+  "intro": "Het Muiderslot vanuit het noordoosten, painted by Gerrit Adriaensz. Berckheyde (1638–1698). Spliced with a contemporary photograph of the medieval fortress at Muiden.",
+  "coordinates": "52.334057, 5.041695",
+  "annotations": [
+    {
+      "id": "muiderslot-fortress-history",
+      "title": "Het Muiderslot",
+      "text": "The imposing brick fortress captured so accurately by Berckheyde has a turbulent history that long predates this peaceful seventeenth-century scene. Originally built in the 13th century by Count Floris V to collect trade tolls. It stood for only sixteen years before rebellious nobles imprisoned the Count inside his own walls, ultimately murdering him and completely destroying the fortress. Rebuilt from the ruins in 1370 on the exact same square foundations, it evolved from a stark military stronghold into a luxurious Renaissance estate in the 17th century, serving as the cultural hub for the Muiderkring, the intellectual elite of the Dutch Golden Age. After suffering centuries of decline where it served as a French barracks and a prison, the dilapidated castle was nearly sold for scrap brick in 1825. King William I intervenes to save the castle from demolition. Later, in 1878, the famous architect Pierre Cuypers (who designed the Rijksmuseum) begins a massive restoration project. Cuypers doesn't just fix the walls; he somewhat romanticizes the castle, adding details he feels should be on a medieval fortress, solidifying its fairy-tale appearance for modern visitors. The painting not only captures a fleeting summer morning, but serves as a precise architectural record of how the castle looked during the Dutch Golden Age, which is remarkably similar to how it still stands today.",
+      "x": 35,
+      "y": 42
+    },
+    {
+      "id": "foreground-fishermen-and-staffage",
+      "title": "Fishermen and Gentlemen on the Moat",
+      "text": "In the foreground, the moat is bustling with activity. Three fishermen are hard at work: two pull a heavy net ashore, while the third tends to another net from his small boat. Standing on the shore, watching the fishermen, are two elegantly dressed gentlemen accompanied by a hunting dog. Their presence brings up an interesting question: who are they?\n\nWhile it is tempting to think one of them is the famous \"Lord of the Castle\" (the poet and historian P.C. Hooft, who transformed the fortress into a lively cultural hub) history tells us otherwise. Hooft died in 1647, and Berckheyde (who lived from 1638 to 1698) painted this scene decades later. Therefore, these wealthy observers are likely a later Drost (Bailiff) of Muiden taking a morning stroll, or they are what art historians call staffage - anonymous figures intentionally added by the painter to provide scale, enliven the scene, and highlight the stark social contrast between the wealthy elite and the working-class fishermen.",
+      "x": 60,
+      "y": 86
+    }
+  ]
+}

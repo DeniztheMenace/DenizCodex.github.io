@@ -12,5 +12,12 @@
     "icon": "feather",
     "layout": "scholarly",
     "description": "Manuscript thoughts, investigations, and essays."
+  },
+  {
+    "id": "stem",
+    "name": "STEM",
+    "icon": "cpu",
+    "layout": "scholarly",
+    "description": "Articles about science, technology, engineering, and mathematics."
   }
 ]

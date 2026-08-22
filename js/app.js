@@ -312,10 +312,10 @@ class CodexApp {
     }
 
     // Call dynamic layout compilers
-    if (article.category === 'thinktank') {
-      renderThinkTank(this, article, scrollPercent);
-    } else if (article.category === 'historic-splice') {
+    if (article.category === 'historic-splice') {
       renderHistoricSplice(this, article, scrollPercent);
+    } else {
+      renderThinkTank(this, article, scrollPercent);
     }
   }
 
