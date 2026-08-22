@@ -95,23 +95,32 @@ class CodexApp {
     
     const container = this.reader.pageContentEl;
     
-    // 1. Compile Latest Activity cards HTML (take up to 3 latest posts)
+    // 1. Compile Latest Activity cards HTML (showing all recent articles)
     let activityHtml = '';
-    const recentArticles = [...this.articles].reverse().slice(0, 3);
+    const recentArticles = [...this.articles].reverse();
     
     recentArticles.forEach(art => {
       const category = this.categories.find(c => c.id === art.category);
       const catName = category ? category.name : 'Log';
+      const catIcon = category ? (category.icon || 'book-open') : 'feather';
       
       activityHtml += `
         <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
-          <div>
-            <span class="card-category-tag">${catName}</span>
+          <div class="activity-card-header">
+            <span class="card-category-tag">
+              <i data-lucide="${catIcon}" class="card-cat-icon"></i>
+              ${catName}
+            </span>
+            <span class="card-date">${art.date}</span>
+          </div>
+          <div class="activity-card-body">
             <h3>${art.title}</h3>
-            <span class="card-date">${art.date} • By ${art.author}</span>
             <p>${art.summary}</p>
           </div>
-          <span class="card-footer-link">Read Log <i data-lucide="arrow-right" style="width: 14px; height: 14px; vertical-align: middle;"></i></span>
+          <div class="activity-card-footer">
+            <span class="card-author">By ${art.author}</span>
+            <span class="card-footer-link">Read Log <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+          </div>
         </div>
       `;
     });
@@ -119,13 +128,44 @@ class CodexApp {
     // 2. Compile Explore Chapters cards HTML
     let chaptersHtml = '';
     this.categories.forEach(cat => {
+      const catArticles = this.articles.filter(a => a.category === cat.id);
+      const catArticleCount = catArticles.length;
+      
+      // Build quick links preview for top articles in this category
+      let articlePreviewsHtml = '';
+      catArticles.slice(0, 3).forEach(art => {
+        articlePreviewsHtml += `
+          <li class="chapter-preview-item" onclick="event.stopPropagation(); window.location.hash='#/article/${art.id}'">
+            <span class="chapter-preview-title">${art.title}</span>
+            <i data-lucide="chevron-right" class="chapter-preview-icon"></i>
+          </li>
+        `;
+      });
+
       chaptersHtml += `
         <div class="chapter-card" onclick="window.location.hash='#/category/${cat.id}'">
-          <div class="icon-wrapper">
-            <i data-lucide="${cat.icon || 'book-open'}"></i>
+          <div class="chapter-card-top">
+            <div class="icon-wrapper">
+              <i data-lucide="${cat.icon || 'book-open'}"></i>
+            </div>
+            <div class="chapter-title-group">
+              <h3>${cat.name}</h3>
+              <span class="chapter-count-badge">${catArticleCount} ${catArticleCount === 1 ? 'entry' : 'entries'}</span>
+            </div>
           </div>
-          <h3>${cat.name}</h3>
-          <p>${cat.description}</p>
+          <p class="chapter-desc">${cat.description}</p>
+          
+          <div class="chapter-previews-container">
+            <span class="chapter-previews-label">Inside Chapter:</span>
+            <ul class="chapter-previews-list">
+              ${articlePreviewsHtml}
+            </ul>
+          </div>
+
+          <div class="chapter-card-action">
+            <span>Explore Chapter</span>
+            <i data-lucide="arrow-right" class="chapter-action-icon"></i>
+          </div>
         </div>
       `;
     });
@@ -133,14 +173,20 @@ class CodexApp {
     // 3. Inject homepage DOM
     container.innerHTML = `
       <section class="landing-section fade-in">
-        <h2 class="section-title"><i data-lucide="clock"></i> Latest Activity</h2>
+        <div class="section-header-flex">
+          <h2 class="section-title"><i data-lucide="clock"></i> Latest Activity</h2>
+          <span class="section-badge">${recentArticles.length} Archives</span>
+        </div>
         <div class="activity-grid">
           ${activityHtml}
         </div>
       </section>
 
-      <section class="landing-section fade-in">
-        <h2 class="section-title"><i data-lucide="library"></i> Explore Chapters</h2>
+      <section class="landing-section fade-in" style="margin-top: 3rem;">
+        <div class="section-header-flex">
+          <h2 class="section-title"><i data-lucide="library"></i> Explore Chapters</h2>
+          <span class="section-badge">${this.categories.length} Categories</span>
+        </div>
         <div class="chapters-grid">
           ${chaptersHtml}
         </div>

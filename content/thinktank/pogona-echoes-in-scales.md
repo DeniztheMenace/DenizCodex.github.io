@@ -2,7 +2,7 @@ On a summer evening in 1949, deep in the Syrian interior, archaeologists unearth
 
 ![Coin depicting Seleucus II Callinicus Pogon, unearthed in the Syrian interior in 1949.](assets/seleucus-pogon-coin.jpg)
 
-When the prolific Australian herpetologist Glen Milton Storr classified hundreds of reptile species, he likely didn't struggle to name the genus to which the bearded dragon belongs: *Pogona*. Binomial nomenclature has always invited a touch of taxonomic creativity. Across millions of years of evolution, the dragon's formidable armor—hard, spiny scales that appear razor-sharp to the touch—has served as a potent deterrent against hungry goannas, dingoes, and birds of prey.
+When the prolific Australian herpetologist Glen Milton Storr classified hundreds of reptile species, he likely didn't struggle to name the genus to which the bearded dragon belongs: *Pogona*. Binomial nomenclature has always invited a touch of taxonomic creativity. Across millions of years of evolution, the dragon's formidable armor - hard, spiny scales that appear razor-sharp to the touch - has served as a potent deterrent against hungry goannas, dingoes, and birds of prey.
 
 ## Survival in the Unforgiving Desert
 
@@ -14,4 +14,4 @@ Studying living beings often requires a degree of scientific detachment. Much of
 
 Can we ever then truly step into the consciousness of another creature? Can we feel what they feel and experience what they experience at any given moment? Or are we forever isolated by the membrane of our own minds, bound to a world that exists only as it appears to us?
 
-![A bearded dragon (*Pogona*) basking in Australia's savanna, demonstrating its spiny armor and acute awareness.](assets/pogona-bearded-dragon.jpg)
+![](assets/pogona-bearded-dragon.jpg)

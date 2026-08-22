@@ -12,11 +12,11 @@
   {
     "id": "muiderslot-1670",
     "category": "historic-splice",
-    "title": "Het Muiderslot vanuit het noordoosten: Gerrit Berckheyde (1653–1698)",
+    "title": "Het Muiderslot vanuit het noordoosten: Gerrit Berckheyde (1653-1698)",
     "date": "August 22, 2026",
     "year": 1670,
     "author": "Deniz",
-    "summary": "Het Muiderslot vanuit het noordoosten, painted by Gerrit Berckheyde. Spliced with modern photography of the 13th-century fortress in Muiden.",
+    "summary": "Het Muiderslot vanuit het noordoosten. Oil on canvas, 52 x 62 cm. Photo taken 07-02-2026.",
     "contentFile": "content/historic-splice/splice-muiderslot.json"
   },
   {
@@ -34,7 +34,7 @@
     "title": "The Architecture of Mercy: Radical Benevolence in Central Anatolia",
     "date": "August 8, 2026",
     "author": "Deniz",
-    "summary": "An exploration of Gönül, Central Anatolian troubadour philosophy, and the bittersweet ethics of radical non-retaliation in the steppes of Kırşehir.",
+    "summary": "An exploration of Gönül, Central Anatolian troubadour philosophy, and the ethics of radical non-retaliation from the steppes.",
     "contentFile": "content/thinktank/architecture-of-mercy.md"
   },
   {
@@ -43,7 +43,7 @@
     "title": "Pogona: Echoes in the Scales",
     "date": "August 22, 2026",
     "author": "Deniz",
-    "summary": "An exploration of Seleucus II Callinicus Pogon, Glen Milton Storr's taxonomy of the bearded dragon, and the mysterious black box of animal consciousness.",
+    "summary": "Reflection on the black box of consciousness.",
     "contentFile": "content/thinktank/pogona-echoes-in-scales.md"
   },
   {
@@ -61,7 +61,7 @@
     "title": "De geschiedenis van draadloze communicatie in zes generaties",
     "date": "August 22, 2026",
     "author": "Deniz",
-    "summary": "Van autotelefoons in 0G en de analoge 1G-netwerken tot 5G IoT-pijlers en de futuristische terabit-belofte van 6G.",
+    "summary": "Van autotelefoons tot alles verbonden: een reis door de evolutie van mobiele netwerken, van 0G tot 6G.",
     "contentFile": "content/stem/de-geschiedenis-van-draadloze-communicatie.md"
   }
 ]
