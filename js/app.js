@@ -20,9 +20,10 @@ class CodexApp {
   async init() {
     try {
       // 1. Fetch metadata databases
+      const timestamp = Date.now();
       const [categoriesRes, articlesRes] = await Promise.all([
-        fetch('data/categories.json'),
-        fetch('data/articles.json')
+        fetch(`data/categories.json?v=${timestamp}`, { cache: 'no-cache' }),
+        fetch(`data/articles.json?v=${timestamp}`, { cache: 'no-cache' })
       ]);
 
       if (!categoriesRes.ok || !articlesRes.ok) {
