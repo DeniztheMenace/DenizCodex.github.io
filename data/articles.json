@@ -44,17 +44,6 @@
     "contentFile": "content/thinktank/architecture-of-mercy.md"
   },
   {
-    "id": "pogona-echoes-in-scales",
-    "category": "thinktank",
-    "title": "Pogona: Echoes in the Scales",
-    "date": "August 22, 2026",
-    "author": "Deniz",
-    "summary": "Reflection on the black box of consciousness.",
-    "image": "assets/pogona-cover-hd.png",
-    "readTime": "4 min read",
-    "contentFile": "content/thinktank/pogona-echoes-in-scales.md"
-  },
-  {
     "id": "the-meaning-maker",
     "category": "stem",
     "title": "The Meaning-Maker: Redefining the CIO in an Age of Complexity",
