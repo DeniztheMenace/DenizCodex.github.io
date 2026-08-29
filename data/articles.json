@@ -28,7 +28,7 @@
     "date": "August 7, 2026",
     "author": "Deniz",
     "summary": "An exploration of the Winter War, Simo Häyhä 'The White Death', and the psychological concept of Sisu - extraordinary determination in the face of impossible odds.",
-    "image": "assets/sisu-cover-hd.png",
+    "image": "assets/finnish-ski-patrol-lapland.jpg",
     "readTime": "6 min read",
     "contentFile": "content/thinktank/sisu-the-finnish-spirit.md"
   },
@@ -39,7 +39,7 @@
     "date": "August 8, 2026",
     "author": "Deniz",
     "summary": "An exploration of Gönül, Central Anatolian troubadour philosophy, and the ethics of radical non-retaliation from the steppes.",
-    "image": "assets/anatolian-mercy-cover-hd.png",
+    "image": "assets/anatolian-steppe.jpg",
     "readTime": "6 min read",
     "contentFile": "content/thinktank/architecture-of-mercy.md"
   },
@@ -50,7 +50,7 @@
     "date": "August 22, 2026",
     "author": "Deniz",
     "summary": "From Bletchley Park indexers to modern AI transformation: how technology leaders shift from managing data architecture to collective meaning-making.",
-    "image": "assets/meaning-maker-cover-hd.png",
+    "image": "assets/vintage-typewriter-code.jpg",
     "readTime": "7 min read",
     "contentFile": "content/stem/the-meaning-maker-redefining-the-cio.md"
   },
@@ -61,8 +61,19 @@
     "date": "August 22, 2026",
     "author": "Deniz",
     "summary": "Van autotelefoons tot alles verbonden: een reis door de evolutie van mobiele netwerken, van 0G tot 6G.",
-    "image": "assets/wireless-history-cover-hd.png",
+    "image": "assets/telecom-tower-sunset.jpg",
     "readTime": "10 min read",
     "contentFile": "content/stem/de-geschiedenis-van-draadloze-communicatie.md"
+  },
+  {
+    "id": "the-power-of-the-ellipse-spitfire",
+    "category": "stem",
+    "title": "Structural & Aerodynamic Genius of the Spitfire",
+    "date": "August 29, 2026",
+    "author": "Deniz",
+    "summary": "An in-depth exploration of R.J. Mitchell and Beverley Shenstone's aerodynamic masterwork.",
+    "image": "assets/spitfire-duxford.jpg",
+    "readTime": "12 min read",
+    "contentFile": "content/stem/the-power-of-the-ellipse-spitfire.md"
   }
 ]

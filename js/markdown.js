@@ -1,6 +1,6 @@
 /**
  * A lightweight, custom Markdown-to-HTML parser designed for the Codex blog.
- * Supports standard formatting, blockquotes, lists, and custom footnotes/marginalia.
+ * Supports standard formatting, blockquotes, lists, custom footnotes/marginalia, and LaTeX math via KaTeX.
  */
 export function parseMarkdown(markdown) {
   if (!markdown) return '';
@@ -10,6 +10,37 @@ export function parseMarkdown(markdown) {
   let inList = false;
   let inBlockquote = false;
   const footnotes = {};
+  const mathTokens = [];
+
+  // Math placeholder system to prevent markdown formatting (_italic_, *bold*, etc.)
+  // from corrupting LaTeX commands and subscripts (like \Gamma_0, V_\infty, C_{D_i})
+  function stashMath(tex, displayMode) {
+    const id = mathTokens.length;
+    mathTokens.push({ tex, displayMode });
+    return `@@@CODEX_MATH_${id}@@@`;
+  }
+
+  function renderMath(tex, displayMode = false) {
+    if (typeof window !== 'undefined' && window.katex) {
+      try {
+        return window.katex.renderToString(tex, { displayMode, throwOnError: false });
+      } catch (e) {
+        console.error('KaTeX rendering error:', e);
+      }
+    }
+    return displayMode 
+      ? `<div class="math-block"><code>\\[${tex}\\]</code></div>` 
+      : `<code class="math-inline">\\(${tex}\\)</code>`;
+  }
+
+  function restoreMath(str) {
+    return str.replace(/@@@CODEX_MATH_(\d+)@@@/g, (match, id) => {
+      const token = mathTokens[parseInt(id, 10)];
+      if (!token) return match;
+      const rendered = renderMath(token.tex, token.displayMode);
+      return token.displayMode ? `<div class="math-block">${rendered}</div>` : rendered;
+    });
+  }
   
   // First pass: Extract footnotes [^1]: text
   const cleanedLines = [];
@@ -41,6 +72,44 @@ export function parseMarkdown(markdown) {
       continue;
     }
 
+    // Multiline display math: $$ on its own line
+    if (line === '$$' || line === '\\[') {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      let mathContent = '';
+      i++;
+      while (i < cleanedLines.length && cleanedLines[i].trim() !== '$$' && cleanedLines[i].trim() !== '\\]') {
+        mathContent += (mathContent ? '\n' : '') + cleanedLines[i];
+        i++;
+      }
+      html += `<div class="math-block">${renderMath(mathContent.trim(), true)}</div>\n`;
+      continue;
+    }
+
+    // Single-line block display math $$ ... $$ or \[ ... \]
+    if (line.startsWith('$$') && line.endsWith('$$') && line.length > 4) {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      const tex = line.substring(2, line.length - 2).trim();
+      html += `<div class="math-block">${renderMath(tex, true)}</div>\n`;
+      continue;
+    }
+    if (line.startsWith('\\[') && line.endsWith('\\]') && line.length > 4) {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      const tex = line.substring(2, line.length - 2).trim();
+      html += `<div class="math-block">${renderMath(tex, true)}</div>\n`;
+      continue;
+    }
+
+    // Horizontal Rules / Ornamental Dividers
+    if (line === '---' || line === '***' || line === '___') {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      html += '<hr class="codex-divider" />\n';
+      continue;
+    }
+
     // Headings
     if (line.startsWith('# ')) {
       html += `<h1>${parseInline(line.substring(2))}</h1>\n`;
@@ -57,7 +126,7 @@ export function parseMarkdown(markdown) {
 
     // Images
     if (line.startsWith('![')) {
-      const match = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      const match = line.match(/^!\[(.*)\]\(([^)]+)\)$/);
       if (match) {
         if (inList) { html += '</ul>\n'; inList = false; }
         if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
@@ -79,9 +148,37 @@ export function parseMarkdown(markdown) {
           alt = alt.replace('|large', '');
         }
 
-        html += `<figure class="article-figure${sizeClass}"><img src="${src}" alt="${alt}" class="article-image${sizeClass}" />${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>\n`;
+        const cleanAltAttr = alt.replace(/\[\^[^\]]+\]/g, '').replace(/"/g, '&quot;');
+        const parsedCaption = parseInline(alt);
+        html += `<figure class="article-figure${sizeClass}"><img src="${src}" alt="${cleanAltAttr}" class="article-image${sizeClass}" />${alt ? `<figcaption>${parsedCaption}</figcaption>` : ''}</figure>\n`;
         continue;
       }
+    }
+
+    // Sidenotes / Marginalia: > [!sidenote: Title] or > [!sidenote] or > [!note]
+    if (line.startsWith('> [!sidenote') || line.startsWith('> [!note')) {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      const match = line.match(/^>\s*\[!(?:sidenote|note)(?::\s*([^\]]+))?\]\s*(.*)$/i);
+      let title = (match && match[1]) ? match[1].trim() : 'Marginal Note';
+      let body = (match && match[2]) ? match[2].trim() : '';
+      
+      const boldMatch = body.match(/^\*\*([^*]+)\*\*:\s*(.*)$/);
+      if (boldMatch) {
+        title = boldMatch[1].trim();
+        body = boldMatch[2].trim();
+      }
+
+      html += `<aside class="article-sidenote"><div class="sidenote-header"><i data-lucide="info"></i> <span>${title}</span></div><div class="sidenote-body">${parseInline(body)}</div></aside>\n`;
+      continue;
+    }
+
+    // Direct HTML blocks (like <aside> or custom <div>)
+    if (line.startsWith('<aside') || line.startsWith('<div')) {
+      if (inList) { html += '</ul>\n'; inList = false; }
+      if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
+      html += `${line}\n`;
+      continue;
     }
 
     // Blockquotes
@@ -105,7 +202,6 @@ export function parseMarkdown(markdown) {
     }
 
     // Regular paragraphs
-    // Check if in blockquote or list and close if not matching
     if (inList) {
       html += '</ul>\n';
       inList = false;
@@ -141,13 +237,23 @@ export function parseMarkdown(markdown) {
   function parseInline(text) {
     let output = text;
 
+    // 1. Stash Math Expressions into placeholders FIRST (so TeX syntax isn't altered by bold/italic/links)
+    // Display Math: $$...$$ or \[...\]
+    output = output.replace(/\$\$([\s\S]+?)\$\$/g, (m, tex) => stashMath(tex.trim(), true));
+    output = output.replace(/\\\[([\s\S]+?)\\\]/g, (m, tex) => stashMath(tex.trim(), true));
+
+    // Inline Math: \(...\) or $...$
+    output = output.replace(/\\\(([\s\S]+?)\\\)/g, (m, tex) => stashMath(tex.trim(), false));
+    output = output.replace(/\$([^$\n]+?)\$/g, (m, tex) => stashMath(tex.trim(), false));
+
+    // 2. Standard Markdown Formatting
     // Bold: **text** or __text__
     output = output.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    output = output.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+    output = output.replace(/\b__([^_]+)__\b/g, '<strong>$1</strong>');
 
     // Italics: *text* or _text_
     output = output.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    output = output.replace(/_([^_]+)_/g, '<em>$1</em>');
+    output = output.replace(/(^|\s)_([^_]+)_(?=\s|$|[.,;:!?])/g, '$1<em>$2</em>');
 
     // Inline code: `code`
     output = output.replace(/`([^`]+)`/g, '<code>$1</code>');
@@ -160,6 +266,9 @@ export function parseMarkdown(markdown) {
 
     // Links: [text](url)
     output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+    // 3. Restore all Math placeholders with rendered KaTeX
+    output = restoreMath(output);
 
     return output;
   }
