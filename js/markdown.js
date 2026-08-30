@@ -150,7 +150,7 @@ export function parseMarkdown(markdown) {
 
         const cleanAltAttr = alt.replace(/\[\^[^\]]+\]/g, '').replace(/"/g, '&quot;');
         const parsedCaption = parseInline(alt);
-        html += `<figure class="article-figure${sizeClass}"><img src="${src}" alt="${cleanAltAttr}" class="article-image${sizeClass}" />${alt ? `<figcaption>${parsedCaption}</figcaption>` : ''}</figure>\n`;
+        html += `<figure class="article-figure${sizeClass}"><img src="${src}" alt="${cleanAltAttr}" class="article-image${sizeClass}" loading="lazy" decoding="async" />${alt ? `<figcaption>${parsedCaption}</figcaption>` : ''}</figure>\n`;
         continue;
       }
     }

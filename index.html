@@ -9,22 +9,24 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2">
-  <!-- Google Fonts: Cinzel for headers, EB Garamond for reading, and Playfair Display for decorative serifs -->
+  <!-- Resource Preconnects for Fast DNS & TLS handshakes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
     rel="stylesheet">
+  
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
-  <!-- KaTeX for rendering mathematical equations -->
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <!-- Leaflet for interactive map zooming & coordinates -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Lucide Icons for high-quality SVG icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Deferred High Performance Scripts -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body class="inkwell-theme">

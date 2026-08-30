@@ -22,7 +22,7 @@ function renderArticleCard(art, categories) {
   return `
     <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
       <div class="activity-card-media">
-        <img src="${coverImage}" alt="${art.title}" class="activity-card-thumb" loading="lazy" />
+        <img src="${coverImage}" alt="${art.title}" class="activity-card-thumb" loading="lazy" decoding="async" />
         ${readTimeBadge}
       </div>
       <div class="activity-card-content">
@@ -50,6 +50,7 @@ class CodexApp {
   constructor() {
     this.categories = [];
     this.articles = [];
+    this.contentCache = new Map();
 
     // Core Layout Components
     this.header = new Header(this);
@@ -61,10 +62,9 @@ class CodexApp {
 
   async init() {
     try {
-      const timestamp = Date.now();
       const [categoriesRes, articlesRes] = await Promise.all([
-        fetch(`data/categories.json?v=${timestamp}`, { cache: 'no-cache' }),
-        fetch(`data/articles.json?v=${timestamp}`, { cache: 'no-cache' })
+        fetch('data/categories.json'),
+        fetch('data/articles.json')
       ]);
 
       if (!categoriesRes.ok || !articlesRes.ok) {
@@ -146,45 +146,29 @@ class CodexApp {
 
     const activityHtml = recentArticles.map(art => renderArticleCard(art, this.categories)).join('');
 
-    // 2. Compile Explore Chapters cards
+    // 2. Compile Explore Chapters (Streamlined Compact Codex Volumes)
+    const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
     let chaptersHtml = '';
-    this.categories.forEach(cat => {
+    this.categories.forEach((cat, idx) => {
       const catArticles = this.articles.filter(a => a.category === cat.id);
       const catArticleCount = catArticles.length;
-
-      let articlePreviewsHtml = '';
-      catArticles.slice(0, 3).forEach(art => {
-        articlePreviewsHtml += `
-          <li class="chapter-preview-item" onclick="event.stopPropagation(); window.location.hash='#/article/${art.id}'">
-            <span class="chapter-preview-title">${art.title}</span>
-            <i data-lucide="chevron-right" class="chapter-preview-icon"></i>
-          </li>
-        `;
-      });
+      const vol = romanNumerals[idx] || (idx + 1);
 
       chaptersHtml += `
-        <div class="chapter-card" onclick="window.location.hash='#/category/${cat.id}'">
-          <div class="chapter-card-top">
-            <div class="icon-wrapper">
-              <i data-lucide="${cat.icon || 'book-open'}"></i>
-            </div>
-            <div class="chapter-title-group">
-              <h3>${cat.name}</h3>
-              <span class="chapter-count-badge">${catArticleCount} ${catArticleCount === 1 ? 'entry' : 'entries'}</span>
-            </div>
+        <div class="chapter-card-compact" onclick="window.location.hash='#/category/${cat.id}'">
+          <div class="chapter-compact-icon">
+            <i data-lucide="${cat.icon || 'book-open'}"></i>
           </div>
-          <p class="chapter-desc">${cat.description}</p>
-          
-          <div class="chapter-previews-container">
-            <span class="chapter-previews-label">Inside Chapter:</span>
-            <ul class="chapter-previews-list">
-              ${articlePreviewsHtml}
-            </ul>
+          <div class="chapter-compact-content">
+            <div class="chapter-compact-meta">
+              <span class="chapter-volume-tag">Vol. ${vol}</span>
+              <span class="chapter-compact-count">${catArticleCount} ${catArticleCount === 1 ? 'entry' : 'entries'}</span>
+            </div>
+            <h3 class="chapter-compact-title">${cat.name}</h3>
+            <p class="chapter-compact-desc">${cat.description}</p>
           </div>
-
-          <div class="chapter-card-action">
-            <span>Explore Chapter</span>
-            <i data-lucide="arrow-right" class="chapter-action-icon"></i>
+          <div class="chapter-compact-arrow">
+            <i data-lucide="arrow-right"></i>
           </div>
         </div>
       `;
