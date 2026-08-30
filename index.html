@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +12,25 @@
   <!-- Google Fonts: Cinzel for headers, EB Garamond for reading, and Playfair Display for decorative serifs -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
   <!-- KaTeX for rendering mathematical equations -->
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <!-- Leaflet for interactive map zooming & coordinates -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- Lucide Icons for high-quality SVG icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="inkwell-theme">
   <!-- Desk Background simulating an old researcher's study desk -->
   <div id="desk">
-    
+
     <!-- Sticky Top Header -->
     <header id="codex-header">
       <div class="header-inner">
@@ -43,10 +50,26 @@
 
         <!-- Reading Utilities -->
         <div class="header-utilities">
-          <!-- Search Bar -->
-          <div class="search-box">
-            <i data-lucide="search" class="search-icon"></i>
-            <input type="text" id="search-input" placeholder="Search archives..." aria-label="Search posts">
+          <!-- Search Bar & Toggle -->
+          <div class="utility-dropdown-wrapper search-dropdown-wrapper">
+            <!-- Desktop Search Input -->
+            <div class="search-box desktop-search">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" id="search-input" placeholder="Search archives..." aria-label="Search posts">
+            </div>
+            <!-- Mobile Search Toggle Button -->
+            <button id="btn-toggle-search" class="utility-btn mobile-search-btn" title="Search Archives"
+              aria-label="Toggle search">
+              <i data-lucide="search"></i>
+            </button>
+            <!-- Mobile Search Dropdown Panel -->
+            <div id="search-dropdown" class="dropdown-panel search-dropdown-panel hidden">
+              <div class="mobile-search-box">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="mobile-search-input" placeholder="Search archives..."
+                  aria-label="Search archives">
+              </div>
+            </div>
           </div>
 
           <!-- Bookmarks Ribbon Toggle -->
@@ -57,9 +80,18 @@
             </button>
             <!-- Dropdown Panel -->
             <div id="bookmarks-dropdown" class="dropdown-panel hidden">
-              <h3>Saved Bookmarks</h3>
+              <div class="bookmarks-panel-header">
+                <h3>Saved Bookmarks</h3>
+                <button id="btn-bookmark-current" class="bookmark-current-btn" title="Bookmark current reading position">
+                  <i data-lucide="bookmark-plus"></i>
+                  <span>Bookmark Entry</span>
+                </button>
+              </div>
               <ul id="bookmarks-list">
-                <li class="empty-state">No active bookmarks</li>
+                <li class="empty-state">
+                  <i data-lucide="bookmark" class="empty-icon"></i>
+                  <span>No bookmarks saved yet</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -75,28 +107,35 @@
               <div class="control-row">
                 <span class="control-label">Theme</span>
                 <div class="theme-switchers">
-                  <button id="btn-theme-parchment" class="theme-btn" title="Parchment Theme">
+                  <button id="btn-theme-parchment" class="theme-btn" title="Warm Parchment Theme">
                     <span class="theme-dot parchment"></span>
                     Parchment
                   </button>
-                  <button id="btn-theme-inkwell" class="theme-btn active" title="Inkwell Theme">
+                  <button id="btn-theme-inkwell" class="theme-btn active" title="Inkwell Dark Theme">
                     <span class="theme-dot inkwell"></span>
                     Inkwell
                   </button>
+                  <button id="btn-theme-espresso" class="theme-btn" title="Dark Espresso Theme">
+                    <span class="theme-dot espresso"></span>
+                    Espresso
+                  </button>
                 </div>
               </div>
-              <div class="control-row">
+              <div class="control-row control-row-inline">
                 <span class="control-label">Script Size</span>
                 <div class="font-controls">
-                  <button id="btn-font-dec" class="font-btn" aria-label="Decrease Font Size" title="Decrease Text Size">A-</button>
+                  <button id="btn-font-dec" class="font-btn" aria-label="Decrease Font Size"
+                    title="Decrease Text Size">A-</button>
                   <span id="font-size-indicator" class="font-size-indicator">20px</span>
-                  <button id="btn-font-inc" class="font-btn" aria-label="Increase Font Size" title="Increase Text Size">A+</button>
+                  <button id="btn-font-inc" class="font-btn" aria-label="Increase Font Size"
+                    title="Increase Text Size">A+</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Mobile Navigation Toggle -->
-          <button id="btn-mobile-menu" class="utility-btn mobile-menu-btn" title="Toggle Navigation Menu" aria-label="Toggle navigation menu">
+          <button id="btn-mobile-menu" class="utility-btn mobile-menu-btn" title="Toggle Navigation Menu"
+            aria-label="Toggle navigation menu">
             <i data-lucide="menu" id="mobile-menu-icon"></i>
           </button>
         </div>
@@ -133,4 +172,5 @@
   <!-- Main JavaScript File -->
   <script type="module" src="js/app.js"></script>
 </body>
+
 </html>

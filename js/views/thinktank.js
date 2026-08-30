@@ -7,7 +7,7 @@ import { parseMarkdown } from '../markdown.js';
 export function renderThinkTank(app, article, targetScroll) {
   app.reader.clearReaderState();
   app.reader.setupArticle(article.id, article.title, targetScroll);
-  
+
   const container = app.reader.pageContentEl;
   container.innerHTML = `
     <div class="loading-state">
@@ -22,7 +22,7 @@ export function renderThinkTank(app, article, targetScroll) {
     })
     .then(markdown => {
       const htmlContent = parseMarkdown(markdown);
-      
+
       container.innerHTML = `
         <div class="readable-column fade-in">
           <header class="article-header">
@@ -36,7 +36,7 @@ export function renderThinkTank(app, article, targetScroll) {
           
           <div class="add-bookmark-container">
             <button id="btn-save-progress" class="add-bookmark-btn">
-              <i data-lucide="bookmark"></i> Save Reading Progress
+              <i data-lucide="bookmark"></i> Bookmark Entry
             </button>
           </div>
         </div>
@@ -45,6 +45,20 @@ export function renderThinkTank(app, article, targetScroll) {
       // Event listener for progress bookmarking
       document.getElementById('btn-save-progress').addEventListener('click', () => {
         app.reader.saveActiveBookmark();
+      });
+
+      // Smooth scrolling for footnote references and back-references
+      container.querySelectorAll('.footnote-ref, .footnote-backref').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').replace(/^#/, '');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.add('footnote-target-highlight');
+            setTimeout(() => targetEl.classList.remove('footnote-target-highlight'), 2000);
+          }
+        });
       });
 
       if (window.lucide) {

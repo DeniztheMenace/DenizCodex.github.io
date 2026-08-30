@@ -11,10 +11,14 @@ export class Header {
     this.bookmarksListEl = document.getElementById('bookmarks-list');
     this.bookmarksBadgeEl = document.getElementById('bookmarks-badge');
     this.searchInputEl = document.getElementById('search-input');
+    this.searchToggleBtn = document.getElementById('btn-toggle-search');
+    this.searchDropdown = document.getElementById('search-dropdown');
+    this.mobileSearchInputEl = document.getElementById('mobile-search-input');
     
     // Toggles
     this.bookmarksToggleBtn = document.getElementById('btn-toggle-bookmarks');
     this.bookmarksDropdown = document.getElementById('bookmarks-dropdown');
+    this.bookmarkCurrentBtn = document.getElementById('btn-bookmark-current');
     
     this.settingsToggleBtn = document.getElementById('btn-toggle-settings');
     this.settingsDropdown = document.getElementById('settings-dropdown');
@@ -22,6 +26,7 @@ export class Header {
     // Themes
     this.themeParchmentBtn = document.getElementById('btn-theme-parchment');
     this.themeInkwellBtn = document.getElementById('btn-theme-inkwell');
+    this.themeEspressoBtn = document.getElementById('btn-theme-espresso');
     
     // Font controls
     this.fontDecBtn = document.getElementById('btn-font-dec');
@@ -44,23 +49,62 @@ export class Header {
       });
     }
 
+    // Search dropdown toggle (Mobile)
+    if (this.searchToggleBtn) {
+      this.searchToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const willOpen = this.searchDropdown.classList.contains('hidden');
+        this.searchDropdown.classList.toggle('hidden');
+        this.bookmarksDropdown.classList.add('hidden');
+        this.settingsDropdown.classList.add('hidden');
+        this.closeMobileMenu();
+        if (willOpen && this.mobileSearchInputEl) {
+          setTimeout(() => this.mobileSearchInputEl.focus(), 50);
+        }
+      });
+    }
+
     // Dropdown toggles
     this.bookmarksToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.bookmarksDropdown.classList.toggle('hidden');
       this.settingsDropdown.classList.add('hidden');
+      if (this.searchDropdown) this.searchDropdown.classList.add('hidden');
       this.closeMobileMenu();
+      this.updateBookmarkButtonState();
     });
+
+    if (this.bookmarkCurrentBtn) {
+      this.bookmarkCurrentBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.app.reader.activeArticleId) {
+          this.app.reader.saveActiveBookmark();
+          this.bookmarkCurrentBtn.classList.add('saved');
+          const originalText = this.bookmarkCurrentBtn.innerHTML;
+          this.bookmarkCurrentBtn.innerHTML = '<i data-lucide="check"></i><span>Saved!</span>';
+          if (window.lucide) window.lucide.createIcons();
+          setTimeout(() => {
+            this.bookmarkCurrentBtn.innerHTML = originalText;
+            this.bookmarkCurrentBtn.classList.remove('saved');
+            if (window.lucide) window.lucide.createIcons();
+          }, 1500);
+        }
+      });
+    }
 
     this.settingsToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.settingsDropdown.classList.toggle('hidden');
       this.bookmarksDropdown.classList.add('hidden');
+      if (this.searchDropdown) this.searchDropdown.classList.add('hidden');
       this.closeMobileMenu();
     });
 
     // Close dropdowns & mobile drawer on outside clicks
     document.addEventListener('click', (e) => {
+      if (this.searchDropdown && !this.searchDropdown.contains(e.target) && !this.searchToggleBtn.contains(e.target)) {
+        this.searchDropdown.classList.add('hidden');
+      }
       if (!this.bookmarksDropdown.contains(e.target) && !this.bookmarksToggleBtn.contains(e.target)) {
         this.bookmarksDropdown.classList.add('hidden');
       }
@@ -72,12 +116,24 @@ export class Header {
       }
     });
 
-    // Search input
-    this.searchInputEl.addEventListener('input', (e) => this.handleSearch(e.target.value));
+    // Search inputs (Synchronized between desktop & mobile)
+    if (this.searchInputEl) {
+      this.searchInputEl.addEventListener('input', (e) => {
+        if (this.mobileSearchInputEl) this.mobileSearchInputEl.value = e.target.value;
+        this.handleSearch(e.target.value);
+      });
+    }
+    if (this.mobileSearchInputEl) {
+      this.mobileSearchInputEl.addEventListener('input', (e) => {
+        if (this.searchInputEl) this.searchInputEl.value = e.target.value;
+        this.handleSearch(e.target.value);
+      });
+    }
 
     // Themes
-    this.themeParchmentBtn.addEventListener('click', () => this.setTheme('parchment'));
-    this.themeInkwellBtn.addEventListener('click', () => this.setTheme('inkwell'));
+    if (this.themeParchmentBtn) this.themeParchmentBtn.addEventListener('click', () => this.setTheme('parchment'));
+    if (this.themeInkwellBtn) this.themeInkwellBtn.addEventListener('click', () => this.setTheme('inkwell'));
+    if (this.themeEspressoBtn) this.themeEspressoBtn.addEventListener('click', () => this.setTheme('espresso'));
 
     // Font Sizing
     this.fontDecBtn.addEventListener('click', () => this.adjustFontSize(-1));
@@ -89,15 +145,22 @@ export class Header {
   }
 
   setTheme(theme) {
+    document.body.classList.remove('parchment-theme', 'inkwell-theme', 'espresso-theme');
+    if (this.themeParchmentBtn) this.themeParchmentBtn.classList.remove('active');
+    if (this.themeInkwellBtn) this.themeInkwellBtn.classList.remove('active');
+    if (this.themeEspressoBtn) this.themeEspressoBtn.classList.remove('active');
+
     if (theme === 'parchment') {
-      document.body.className = 'parchment-theme';
-      this.themeParchmentBtn.classList.add('active');
-      this.themeInkwellBtn.classList.remove('active');
+      document.body.classList.add('parchment-theme');
+      if (this.themeParchmentBtn) this.themeParchmentBtn.classList.add('active');
       localStorage.setItem('codex-theme', 'parchment');
+    } else if (theme === 'espresso') {
+      document.body.classList.add('espresso-theme');
+      if (this.themeEspressoBtn) this.themeEspressoBtn.classList.add('active');
+      localStorage.setItem('codex-theme', 'espresso');
     } else {
-      document.body.className = 'inkwell-theme';
-      this.themeParchmentBtn.classList.remove('active');
-      this.themeInkwellBtn.classList.add('active');
+      document.body.classList.add('inkwell-theme');
+      if (this.themeInkwellBtn) this.themeInkwellBtn.classList.add('active');
       localStorage.setItem('codex-theme', 'inkwell');
     }
   }
@@ -249,7 +312,13 @@ export class Header {
     this.bookmarksListEl.innerHTML = '';
     
     if (bookmarks.length === 0) {
-      this.bookmarksListEl.innerHTML = '<li class="empty-state">No active bookmarks</li>';
+      this.bookmarksListEl.innerHTML = `
+        <li class="empty-state">
+          <i data-lucide="bookmark" class="empty-icon"></i>
+          <span>No bookmarks saved yet</span>
+        </li>
+      `;
+      if (window.lucide) window.lucide.createIcons();
       return;
     }
     
@@ -281,5 +350,11 @@ export class Header {
     if (window.lucide) {
       window.lucide.createIcons();
     }
+  }
+
+  updateBookmarkButtonState() {
+    if (!this.bookmarkCurrentBtn) return;
+    const isReadingArticle = Boolean(this.app.reader && this.app.reader.activeArticleId);
+    this.bookmarkCurrentBtn.style.display = isReadingArticle ? 'flex' : 'none';
   }
 }
