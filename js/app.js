@@ -2,6 +2,7 @@ import { Header } from './components/header.js';
 import { Reader } from './components/reader.js';
 import { renderThinkTank } from './views/thinktank.js';
 import { renderHistoricSplice } from './views/historicSplice.js';
+import { renderSnippetsCategory, renderSnippet, openSnippetLightbox } from './views/snippets.js';
 
 /**
  * Helper to render an article card consistently across landing, category, and search views
@@ -12,12 +13,19 @@ function renderArticleCard(art, categories) {
   const catIcon = category ? (category.icon || 'book-open') : 'feather';
   const coverImage = art.image || 'assets/parchment-texture.png';
 
-  const readTimeBadge = (art.category !== 'historic-splice' && art.readTime)
-    ? `<span class="card-read-time">
-         <i data-lucide="clock" class="read-time-icon"></i>
-         ${art.readTime}
-       </span>`
-    : '';
+  let readTimeBadge = '';
+  if (art.category === 'snippets') {
+    const isVid = art.mediaType === 'video';
+    readTimeBadge = `<span class="card-read-time card-snippet-badge">
+      <i data-lucide="${isVid ? 'play' : 'camera'}" class="read-time-icon"></i>
+      ${isVid ? (art.readTime || 'Video') : 'Photo'}
+    </span>`;
+  } else if (art.category !== 'historic-splice' && art.readTime) {
+    readTimeBadge = `<span class="card-read-time">
+      <i data-lucide="clock" class="read-time-icon"></i>
+      ${art.readTime}
+    </span>`;
+  }
 
   return `
     <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
@@ -146,7 +154,54 @@ class CodexApp {
 
     const activityHtml = recentArticles.map(art => renderArticleCard(art, this.categories)).join('');
 
-    // 2. Compile Explore Chapters (Streamlined Compact Codex Volumes)
+    // 2. Compile Moments & Snippets Stream
+    const snippetArticles = this.articles.filter(a => a.category === 'snippets');
+    let snippetsStreamHtml = '';
+    if (snippetArticles.length > 0) {
+      const streamCards = snippetArticles.map((snip, idx) => {
+        const isVid = snip.mediaType === 'video';
+        const cover = snip.image || 'assets/parchment-texture.png';
+        return `
+          <div class="snippet-stream-card" data-snippet-id="${snip.id}" data-index="${idx}">
+            <div class="snippet-stream-media">
+              <img src="${cover}" alt="${snip.title}" class="snippet-stream-thumb" loading="lazy" decoding="async" />
+              <div class="snippet-stream-badge ${isVid ? 'video' : 'photo'}">
+                <i data-lucide="${isVid ? 'play' : 'camera'}"></i>
+                <span>${isVid ? (snip.readTime || 'Video') : 'Photo'}</span>
+              </div>
+              ${isVid ? '<div class="snippet-stream-play-icon"><i data-lucide="play"></i></div>' : ''}
+              <div class="snippet-stream-meta-overlay">
+                <span class="snippet-stream-date">${snip.date}</span>
+                ${snip.location ? `<span class="snippet-stream-loc"><i data-lucide="map-pin"></i> ${snip.location}</span>` : ''}
+              </div>
+            </div>
+            <div class="snippet-stream-info">
+              <h4 class="snippet-stream-title">${snip.title}</h4>
+              <p class="snippet-stream-desc">${snip.summary}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      snippetsStreamHtml = `
+        <section class="landing-section fade-in" style="margin-top: 3.5rem;">
+          <div class="section-header-flex">
+            <h2 class="section-title"><i data-lucide="film"></i> Moments & Snippets</h2>
+            <a href="#/category/snippets" class="section-header-link">
+              <span>View All Moments</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+          <div class="snippets-stream-wrapper">
+            <div class="snippets-stream-track">
+              ${streamCards}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // 3. Compile Explore Chapters (Streamlined Compact Codex Volumes)
     const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
     let chaptersHtml = '';
     this.categories.forEach((cat, idx) => {
@@ -174,7 +229,7 @@ class CodexApp {
       `;
     });
 
-    // 3. Inject homepage DOM
+    // 4. Inject homepage DOM
     container.innerHTML = `
       <section class="landing-section fade-in">
         <div class="section-header-flex">
@@ -185,7 +240,9 @@ class CodexApp {
         </div>
       </section>
 
-      <section class="landing-section fade-in" style="margin-top: 3rem;">
+      ${snippetsStreamHtml}
+
+      <section class="landing-section fade-in" style="margin-top: 3.5rem;">
         <div class="section-header-flex">
           <h2 class="section-title"><i data-lucide="library"></i> Explore Chapters</h2>
         </div>
@@ -194,6 +251,17 @@ class CodexApp {
         </div>
       </section>
     `;
+
+    // Attach click listeners to snippets stream cards to open Lightbox
+    container.querySelectorAll('.snippet-stream-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-snippet-id');
+        const targetIndex = snippetArticles.findIndex(a => a.id === id);
+        if (targetIndex !== -1) {
+          openSnippetLightbox(this, snippetArticles, targetIndex);
+        }
+      });
+    });
 
     if (window.lucide) {
       window.lucide.createIcons();
@@ -213,6 +281,12 @@ class CodexApp {
     const catArticles = this.articles
       .filter(a => a.category === categoryId)
       .sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
+
+    // ── Snippets: interactive moments gallery ────────────────────────
+    if (categoryId === 'snippets') {
+      renderSnippetsCategory(this, category, catArticles);
+      return;
+    }
 
     // ── Historic Splice: horizontal chronological timeline ──────────────────────────
     if (categoryId === 'historic-splice') {
@@ -346,6 +420,8 @@ class CodexApp {
 
     if (article.category === 'historic-splice') {
       renderHistoricSplice(this, article, scrollPercent);
+    } else if (article.category === 'snippets') {
+      renderSnippet(this, article, scrollPercent);
     } else {
       renderThinkTank(this, article, scrollPercent);
     }

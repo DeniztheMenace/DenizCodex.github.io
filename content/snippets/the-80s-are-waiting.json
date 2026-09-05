@@ -1,0 +1,22 @@
+{
+  "id": "the-80s-are-waiting",
+  "category": "snippets",
+  "title": "80's called",
+  "date": "September 4, 2026",
+  "author": "Deniz",
+  "mediaType": "video",
+  "media": {
+    "type": "video",
+    "src": "assets/the-80s-are-waiting.mp4",
+    "poster": "assets/the-80s-are-waiting-poster.jpg",
+    "aspectRatio": "16/9",
+    "duration": "0:34",
+    "caption": "The 80's are waiting."
+  },
+  "metadata": {
+    "format": "4K UHD • 0:34 min",
+    "time": "Night / Low Light",
+    "caption": "The 80's are waiting."
+  },
+  "journal": "The 80's are waiting."
+}

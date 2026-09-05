@@ -19,5 +19,12 @@
     "icon": "cpu",
     "layout": "scholarly",
     "description": "Articles about science, technology, engineering, and mathematics."
+  },
+  {
+    "id": "snippets",
+    "name": "Snippets",
+    "icon": "film",
+    "layout": "snippets",
+    "description": "Moments from my life captured in photographs and moving pictures."
   }
 ]

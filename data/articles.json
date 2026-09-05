@@ -75,5 +75,18 @@
     "image": "assets/spitfire-duxford.jpg",
     "readTime": "12 min read",
     "contentFile": "content/stem/the-power-of-the-ellipse-spitfire.md"
+  },
+  {
+    "id": "the-80s-are-waiting",
+    "category": "snippets",
+    "title": "80's called",
+    "date": "September 4, 2026",
+    "author": "Deniz",
+    "summary": "The 80's are waiting.",
+    "mediaType": "video",
+    "image": "assets/the-80s-are-waiting-poster.jpg",
+    "videoSrc": "assets/the-80s-are-waiting.mp4",
+    "readTime": "0:34 min clip",
+    "contentFile": "content/snippets/the-80s-are-waiting.json"
   }
 ]
