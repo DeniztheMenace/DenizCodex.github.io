@@ -27,6 +27,13 @@ function renderArticleCard(art, categories) {
     </span>`;
   }
 
+  let actionLabel = 'Read Entry';
+  if (art.category === 'snippets') {
+    actionLabel = (art.mediaType === 'video') ? 'Watch' : 'View';
+  } else if (art.category === 'historic-splice') {
+    actionLabel = 'Explore';
+  }
+
   return `
     <div class="activity-card" onclick="window.location.hash='#/article/${art.id}'">
       <div class="activity-card-media">
@@ -47,7 +54,7 @@ function renderArticleCard(art, categories) {
         </div>
         <div class="activity-card-footer">
           <span class="card-author">By ${art.author}</span>
-          <span class="card-footer-link">Read Entry <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
+          <span class="card-footer-link">${actionLabel} <i data-lucide="arrow-right" class="card-arrow-icon"></i></span>
         </div>
       </div>
     </div>

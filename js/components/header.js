@@ -356,5 +356,18 @@ export class Header {
     if (!this.bookmarkCurrentBtn) return;
     const isReadingArticle = Boolean(this.app.reader && this.app.reader.activeArticleId);
     this.bookmarkCurrentBtn.style.display = isReadingArticle ? 'flex' : 'none';
+    if (isReadingArticle) {
+      const art = this.app.articles.find(a => a.id === this.app.reader.activeArticleId);
+      const span = this.bookmarkCurrentBtn.querySelector('span');
+      if (span && art) {
+        if (art.category === 'snippets') {
+          span.textContent = 'Bookmark Moment';
+        } else if (art.category === 'historic-splice') {
+          span.textContent = 'Bookmark Splice';
+        } else {
+          span.textContent = 'Bookmark Entry';
+        }
+      }
+    }
   }
 }

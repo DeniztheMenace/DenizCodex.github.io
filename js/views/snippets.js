@@ -243,7 +243,7 @@ export function renderSnippetsCategory(app, category, catArticles) {
               <p class="snippet-card-summary">${art.summary}</p>
               <div class="snippet-card-footer">
                 <span class="snippet-action-btn">
-                  <i data-lucide="maximize-2"></i> View Moment
+                  <i data-lucide="${isVideo ? 'play' : 'maximize-2'}"></i> ${isVideo ? 'Watch' : 'View'}
                 </span>
                 <a href="#/article/${art.id}" class="snippet-story-link" onclick="event.stopPropagation()">
                   Story <i data-lucide="arrow-right"></i>
@@ -438,7 +438,7 @@ export function renderSnippet(app, article, targetScroll) {
         <!-- Save Bookmark Button -->
         <div class="add-bookmark-container" style="margin-top: 3rem;">
           <button id="btn-save-progress" class="add-bookmark-btn">
-            <i data-lucide="bookmark"></i> Bookmark Entry
+            <i data-lucide="bookmark"></i> Bookmark Moment
           </button>
         </div>
       </div>
