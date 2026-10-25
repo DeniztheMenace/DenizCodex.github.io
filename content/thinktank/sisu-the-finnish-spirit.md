@@ -12,6 +12,8 @@ After the war, he would usually refuse to comment on his wartime actions. His ac
 
 ## The Crucible of the Winter War
 
+![Finnish ski patrol on alert in Northern Finland during the Winter War, January 1940.](assets/finnish-ski-patrol-lapland.jpg)
+
 This sentence could summarize the wartime effort of Finland during the Winter War. The Kremlin, fearing a potential Nazi offensive through Finland, had called for a land swap that would push the Finnish border away from Leningrad (now St. Petersburg). Finland declined and as a result, on November 30, 1939, nearly half a million Soviet troops stormed into Finland.
 
 The Soviets imagined that their staggering superiority in numbers and resources would be enough to quickly overwhelm the undermanned and lightly armed Finns. Men and arms were poured into Finland but were almost immediately bogged down due to the Finns' fierce resistance and guerrilla tactics. A much-anticipated victory for the Soviets was served as a cold dish, tasting bitter, with 65,000 killed and wounded on the Finnish side and anywhere between 300,000 to one million casualties on the Russian side.
