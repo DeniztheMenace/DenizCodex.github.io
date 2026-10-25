@@ -91,6 +91,9 @@ class CodexApp {
 
       window.addEventListener('hashchange', () => this.handleRoute());
       this.handleRoute();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     } catch (err) {
       console.error('Initialization error:', err);
       document.getElementById('page-content').innerHTML = `
@@ -151,6 +154,7 @@ class CodexApp {
   }
 
   showLanding() {
+    document.title = 'Deniz Codex | Deniz Seyfeli — Personal Thinktank & Archives';
     this.reader.clearReaderState();
     const container = this.reader.pageContentEl;
 
@@ -283,6 +287,8 @@ class CodexApp {
       this.showLanding();
       return;
     }
+
+    document.title = `${category.name} | Deniz Codex — Deniz Seyfeli`;
 
     const container = this.reader.pageContentEl;
     const catArticles = this.articles
@@ -425,6 +431,8 @@ class CodexApp {
       return;
     }
 
+    document.title = `${article.title} | Deniz Codex — Deniz Seyfeli`;
+
     if (article.category === 'historic-splice') {
       renderHistoricSplice(this, article, scrollPercent);
     } else if (article.category === 'snippets') {
@@ -440,6 +448,8 @@ class CodexApp {
       this.handleRoute();
       return;
     }
+
+    document.title = `Search: "${query}" | Deniz Codex — Deniz Seyfeli`;
 
     const matches = this.articles.filter(a =>
       a.title.toLowerCase().includes(query) ||

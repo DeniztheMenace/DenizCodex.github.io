@@ -415,7 +415,7 @@ export function renderSnippet(app, article, targetScroll) {
           <span class="snippet-volume-badge">Moment Archive</span>
           <h1 class="snippet-detail-title">${article.title}</h1>
           <div class="snippet-detail-meta">
-            <span>By ${article.author || 'Deniz'}</span>
+            <span>By ${article.author || 'Deniz Seyfeli'}</span>
             <span>•</span>
             <span>${article.date}</span>
             ${article.location ? `<span>•</span><span><i data-lucide="map-pin" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> ${article.location}</span>` : ''}

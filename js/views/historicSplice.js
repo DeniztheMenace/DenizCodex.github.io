@@ -60,7 +60,7 @@ export function renderHistoricSplice(app, article, targetScroll) {
             <header class="splice-header">
               <h1 class="splice-title">${article.title}</h1>
               <div class="splice-meta">
-                <span>By ${article.author || 'Deniz'}</span>
+                <span>By ${article.author || 'Deniz Seyfeli'}</span>
                 <span>•</span>
                 <span>${article.date}</span>
               </div>

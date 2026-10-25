@@ -4,11 +4,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Deniz Codex - A historical repository and personal thinktank.">
-  <title>Deniz Codex</title>
+  
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="KPVu3PrRxLjFcFYrxp5-DN-ss1paaO_fShlQXMoJyEM">
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Deniz Codex | Deniz Seyfeli — Personal Thinktank &amp; Archives</title>
+  <meta name="title" content="Deniz Codex | Deniz Seyfeli — Personal Thinktank &amp; Archives">
+  <meta name="description" content="Deniz Codex is the personal digital archive and thinktank of Deniz Seyfeli. Exploring essays across STEM, history, philosophy, and visual historic splices.">
+  <meta name="keywords" content="Deniz Codex, Deniz Seyfeli, thinktank, STEM, historic splice, essays, history, philosophy, Netherlands">
+  <meta name="author" content="Deniz Seyfeli">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://www.denizcodex.nl/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.denizcodex.nl/">
+  <meta property="og:site_name" content="Deniz Codex">
+  <meta property="og:title" content="Deniz Codex | Deniz Seyfeli — Personal Thinktank &amp; Archives">
+  <meta property="og:description" content="Deniz Codex is the personal digital archive and thinktank of Deniz Seyfeli. Exploring essays across STEM, history, philosophy, and visual historic splices.">
+  <meta property="og:image" content="https://www.denizcodex.nl/assets/parchment-texture.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.denizcodex.nl/">
+  <meta name="twitter:title" content="Deniz Codex | Deniz Seyfeli — Personal Thinktank &amp; Archives">
+  <meta name="twitter:description" content="Deniz Codex is the personal digital archive and thinktank of Deniz Seyfeli.">
+  <meta name="twitter:image" content="https://www.denizcodex.nl/assets/parchment-texture.png">
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2">
+
+  <!-- Google Knowledge Graph Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.denizcodex.nl/#website",
+        "url": "https://www.denizcodex.nl/",
+        "name": "Deniz Codex",
+        "alternateName": ["DenizCodex", "Deniz Codex Archives"],
+        "description": "The personal thinktank, historical repository, and STEM writing of Deniz Seyfeli.",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://www.denizcodex.nl/#author"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.denizcodex.nl/#author",
+        "name": "Deniz Seyfeli",
+        "url": "https://www.denizcodex.nl/",
+        "jobTitle": "ICT Consultant & Researcher",
+        "sameAs": [
+          "https://github.com/DeniztheMenace",
+          "https://www.linkedin.com/in/deniz-seyfeli"
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Resource Preconnects for Fast DNS & TLS handshakes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,11 +222,49 @@
     <main id="codex-container">
       <!-- Centered Manuscript page container -->
       <article id="codex-page">
+        <!-- Noscript fallback for search engine crawlers and users with JS disabled -->
+        <noscript>
+          <div style="padding: 2.5rem 1.5rem; max-width: 800px; margin: 0 auto; font-family: serif; color: #242e28;">
+            <h1 style="font-size: 2rem; margin-bottom: 0.8rem;">Deniz Codex</h1>
+            <p style="font-size: 1.15rem; margin-bottom: 1.2rem;">
+              The personal digital archives and thinktank of <strong>Deniz Seyfeli</strong>. Exploring essays across STEM, historical investigations, philosophy, and visual historic splices.
+            </p>
+            <h2 style="font-size: 1.35rem; margin-top: 1.5rem; margin-bottom: 0.5rem;">Archive Chapters</h2>
+            <ul style="line-height: 1.8; margin-left: 1.5rem;">
+              <li><a href="#/category/historic-splice">Historic Splice</a> — Dutch heritage paintings spliced with the present</li>
+              <li><a href="#/category/thinktank">Thinktank</a> — Investigations in philosophy, history, and courage</li>
+              <li><a href="#/category/stem">STEM</a> — Studies in wireless communications, computing history, and aerodynamics</li>
+              <li><a href="#/category/snippets">Snippets</a> — Moments and visual journal</li>
+            </ul>
+          </div>
+        </noscript>
+
         <div id="page-content" class="fade-in">
           <!-- Dynamically injected content -->
         </div>
       </article>
     </main>
+
+    <!-- Codex Manuscript Footer with Entity Signals -->
+    <footer id="codex-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-title">Deniz Codex</span>
+          <span class="footer-curator">Curated &amp; written by <strong>Deniz Seyfeli</strong></span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/DeniztheMenace" target="_blank" rel="me noopener" title="GitHub Profile">
+            <i data-lucide="github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/deniz-seyfeli" target="_blank" rel="me noopener" title="LinkedIn Profile">
+            <i data-lucide="linkedin"></i> LinkedIn
+          </a>
+          <a href="sitemap.xml" title="Sitemap XML">
+            <i data-lucide="map"></i> Sitemap
+          </a>
+        </div>
+      </div>
+    </footer>
 
   </div>
 
