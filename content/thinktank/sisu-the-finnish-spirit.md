@@ -4,7 +4,7 @@ It was a cold January day as the sun began to show its face over the horizon in 
 
 ## The Legend of the White Death
 
-Simo Häyhä, also known as "the White Death" by the Russians, was a Finnish hero of mythical proportions during the Winter War of 1939–1940. He was a farmer and hunter prior to his military service, living a serene rural life. Maybe it was back then when he developed his sixth sense for the environment the war would be fought on, and the rifle he fought with. Over the course of the Winter War, he would average five body counts a day spread over 100 days, making him one of the deadliest snipers in major warfare.
+Simo Häyhä, also known as "the White Death" by the Russians, was a Finnish hero of mythical proportions during the Winter War of 1939 - 1940. He was a farmer and hunter prior to his military service, living a serene rural life. Maybe it was back then when he developed his sixth sense for the environment the war would be fought on, and the rifle he fought with. Over the course of the Winter War, he would average five body counts a day spread over 100 days, making him one of the deadliest snipers in major warfare.
 
 After the war, he would usually refuse to comment on his wartime actions. His actions were met with either admiration of wartime heroism or hatred for the cold and systematic way he conducted his duties. When asked if he felt remorse, he replied:
 
