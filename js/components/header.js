@@ -212,9 +212,11 @@ export class Header {
     const isHidden = this.mobileNavDrawer.classList.contains('hidden');
     if (isHidden) {
       this.mobileNavDrawer.classList.remove('hidden');
-      this.bookmarksDropdown.classList.add('hidden');
-      this.settingsDropdown.classList.add('hidden');
+      if (this.bookmarksDropdown) this.bookmarksDropdown.classList.add('hidden');
+      if (this.settingsDropdown) this.settingsDropdown.classList.add('hidden');
+      if (this.searchDropdown) this.searchDropdown.classList.add('hidden');
       if (this.mobileMenuBtn) this.mobileMenuBtn.classList.add('active');
+      if (window.lucide) window.lucide.createIcons();
     } else {
       this.closeMobileMenu();
     }

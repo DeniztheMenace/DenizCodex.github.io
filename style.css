@@ -284,7 +284,7 @@ body.espresso-theme .search-box input {
 .search-box input:focus {
   outline: none;
   border-color: var(--color-accent);
-  width: 260px;
+  width: 100%;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 0 3px rgba(28, 59, 87, 0.15);
 }
@@ -384,7 +384,7 @@ body.espresso-theme .search-box input:focus {
 
 /* Mobile Navigation Drawer */
 .mobile-nav-drawer {
-  display: none !important;
+  display: block;
   position: absolute;
   top: var(--header-height);
   left: 0;
@@ -403,6 +403,13 @@ body.espresso-theme .search-box input:focus {
 
 .mobile-nav-drawer.hidden {
   display: none !important;
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-btn,
+  .mobile-nav-drawer {
+    display: none !important;
+  }
 }
 
 .mobile-nav-header {
