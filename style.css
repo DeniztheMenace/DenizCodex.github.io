@@ -9,7 +9,7 @@
   --font-body: 'EB Garamond', serif;
   --font-ui: 'Outfit', sans-serif;
   --font-sans: 'Outfit', sans-serif;
-  --font-reading: 'Newsreader', 'EB Garamond', 'Charter', Georgia, serif;
+  --font-reading: 'EB Garamond', Georgia, serif;
 
   /* Parchment (Light) Theme Variables - Antique Sage & Calming Tea Wash */
   --bg-desk: #dfe4db;
@@ -81,6 +81,8 @@ body.espresso-theme {
   --color-gold-bright: #eec170;
   --border-antique: #3d2f2a;
   --shadow-color: rgba(0, 0, 0, 0.45);
+  --color-reading: #eae0d5;
+  --reading-weight: 400;
 }
 
 /* Reset and Base Elements */
@@ -1723,12 +1725,14 @@ figcaption {
   border-radius: 6px;
 }
 
-body.inkwell-theme .article-duo-figures img {
+body.inkwell-theme .article-duo-figures img,
+body.espresso-theme .article-duo-figures img {
   background-color: #e5e0d5;
   filter: brightness(0.92) contrast(1.02);
 }
 
-body.inkwell-theme .article-image {
+body.inkwell-theme .article-image,
+body.espresso-theme .article-image {
   background-color: transparent;
 }
 
@@ -1757,8 +1761,9 @@ body.inkwell-theme .article-image {
   color: #ded9cd;
 }
 
-body.inkwell-theme .article-body strong {
-  color: #eae5da;
+body.inkwell-theme .article-body strong,
+body.espresso-theme .article-body strong {
+  color: #fff8f0;
 }
 
 .article-body h2 {
@@ -2161,7 +2166,8 @@ body.inkwell-theme .article-body strong {
   font-size: 1.15em;
 }
 
-body.inkwell-theme .katex {
+body.inkwell-theme .katex,
+body.espresso-theme .katex {
   color: var(--color-gold-bright);
 }
 
@@ -2193,6 +2199,12 @@ body.inkwell-theme .katex {
 
 body.inkwell-theme .article-sidenote {
   background: rgba(20, 26, 40, 0.75);
+  border-color: rgba(200, 169, 110, 0.25);
+  border-left-color: var(--color-gold);
+}
+
+body.espresso-theme .article-sidenote {
+  background: rgba(32, 25, 22, 0.75);
   border-color: rgba(200, 169, 110, 0.25);
   border-left-color: var(--color-gold);
 }

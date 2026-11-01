@@ -162,14 +162,14 @@ export class Header {
       document.body.classList.add('parchment-theme');
       if (this.themeParchmentBtn) this.themeParchmentBtn.classList.add('active');
       localStorage.setItem('codex-theme', 'parchment');
-    } else if (theme === 'espresso') {
-      document.body.classList.add('espresso-theme');
-      if (this.themeEspressoBtn) this.themeEspressoBtn.classList.add('active');
-      localStorage.setItem('codex-theme', 'espresso');
-    } else {
+    } else if (theme === 'inkwell') {
       document.body.classList.add('inkwell-theme');
       if (this.themeInkwellBtn) this.themeInkwellBtn.classList.add('active');
       localStorage.setItem('codex-theme', 'inkwell');
+    } else {
+      document.body.classList.add('espresso-theme');
+      if (this.themeEspressoBtn) this.themeEspressoBtn.classList.add('active');
+      localStorage.setItem('codex-theme', 'espresso');
     }
   }
 
@@ -179,7 +179,7 @@ export class Header {
     if (this.fontGaramondBtn) this.fontGaramondBtn.classList.remove('active');
     if (this.fontLoraBtn) this.fontLoraBtn.classList.remove('active');
 
-    const selected = ['newsreader', 'garamond', 'lora'].includes(font) ? font : 'newsreader';
+    const selected = ['newsreader', 'garamond', 'lora'].includes(font) ? font : 'garamond';
     document.body.classList.add(`font-${selected}`);
     if (selected === 'garamond' && this.fontGaramondBtn) this.fontGaramondBtn.classList.add('active');
     else if (selected === 'lora' && this.fontLoraBtn) this.fontLoraBtn.classList.add('active');
@@ -213,10 +213,10 @@ export class Header {
   }
 
   loadPreferences() {
-    const savedTheme = localStorage.getItem('codex-theme') || 'inkwell';
+    const savedTheme = localStorage.getItem('codex-theme') || 'espresso';
     this.setTheme(savedTheme);
 
-    const savedFont = localStorage.getItem('codex-font') || 'newsreader';
+    const savedFont = localStorage.getItem('codex-font') || 'garamond';
     this.setTypeface(savedFont);
     
     const savedSize = localStorage.getItem('codex-font-size');

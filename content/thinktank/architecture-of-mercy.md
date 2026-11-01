@@ -1,7 +1,7 @@
 In the wind-swept steppes of Central Anatolia, the landscape is famously austere. I have many memories as a child walking through these barren hills. Yet out of this place emerged, in my perspective, one of the world's most radically compassionate ethical traditions: radical benevolence.
 ![The wind-swept steppes of Central Anatolia.](assets/anatolian-steppe.jpg)
 
-In Anatolian folk poetry and music, carried by roving *aşıks* (troubadours), and the musicians of my hometown birthplace, benevolence (*ihsan* and *merhamet*) could be perhaps be considered the ultimate antidote to human cruelty. It is built on a simple premise, to retaliate against malice is to let malice govern your soul.
+In Anatolian folk poetry and music, carried by roving *aşıks* (troubadours), and the musicians of my hometown, benevolence (*ihsan* and *merhamet*) could be perhaps be considered the ultimate antidote to human cruelty. It is built on a simple premise, to retaliate against malice is to let malice govern your soul.
 
 ## The Roots: Gönül and the Refusal to Harm
 
