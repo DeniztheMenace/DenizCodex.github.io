@@ -31,6 +31,9 @@ export class Header {
     // Font controls
     this.fontDecBtn = document.getElementById('btn-font-dec');
     this.fontIncBtn = document.getElementById('btn-font-inc');
+    this.fontNewsreaderBtn = document.getElementById('btn-font-newsreader');
+    this.fontGaramondBtn = document.getElementById('btn-font-garamond');
+    this.fontLoraBtn = document.getElementById('btn-font-lora');
     
     // Mobile Navigation
     this.mobileMenuBtn = document.getElementById('btn-mobile-menu');
@@ -139,6 +142,11 @@ export class Header {
     this.fontDecBtn.addEventListener('click', () => this.adjustFontSize(-1));
     this.fontIncBtn.addEventListener('click', () => this.adjustFontSize(1));
 
+    // Typeface Switcher
+    if (this.fontNewsreaderBtn) this.fontNewsreaderBtn.addEventListener('click', () => this.setTypeface('newsreader'));
+    if (this.fontGaramondBtn) this.fontGaramondBtn.addEventListener('click', () => this.setTypeface('garamond'));
+    if (this.fontLoraBtn) this.fontLoraBtn.addEventListener('click', () => this.setTypeface('lora'));
+
     // Load defaults
     this.loadPreferences();
     this.renderBookmarks();
@@ -163,6 +171,21 @@ export class Header {
       if (this.themeInkwellBtn) this.themeInkwellBtn.classList.add('active');
       localStorage.setItem('codex-theme', 'inkwell');
     }
+  }
+
+  setTypeface(font) {
+    document.body.classList.remove('font-newsreader', 'font-garamond', 'font-lora');
+    if (this.fontNewsreaderBtn) this.fontNewsreaderBtn.classList.remove('active');
+    if (this.fontGaramondBtn) this.fontGaramondBtn.classList.remove('active');
+    if (this.fontLoraBtn) this.fontLoraBtn.classList.remove('active');
+
+    const selected = ['newsreader', 'garamond', 'lora'].includes(font) ? font : 'newsreader';
+    document.body.classList.add(`font-${selected}`);
+    if (selected === 'garamond' && this.fontGaramondBtn) this.fontGaramondBtn.classList.add('active');
+    else if (selected === 'lora' && this.fontLoraBtn) this.fontLoraBtn.classList.add('active');
+    else if (this.fontNewsreaderBtn) this.fontNewsreaderBtn.classList.add('active');
+
+    localStorage.setItem('codex-font', selected);
   }
 
   adjustFontSize(direction) {
@@ -192,6 +215,9 @@ export class Header {
   loadPreferences() {
     const savedTheme = localStorage.getItem('codex-theme') || 'inkwell';
     this.setTheme(savedTheme);
+
+    const savedFont = localStorage.getItem('codex-font') || 'newsreader';
+    this.setTypeface(savedFont);
     
     const savedSize = localStorage.getItem('codex-font-size');
     if (savedSize) {

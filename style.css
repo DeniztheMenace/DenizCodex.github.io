@@ -9,6 +9,7 @@
   --font-body: 'EB Garamond', serif;
   --font-ui: 'Outfit', sans-serif;
   --font-sans: 'Outfit', sans-serif;
+  --font-reading: 'Newsreader', 'EB Garamond', 'Charter', Georgia, serif;
 
   /* Parchment (Light) Theme Variables - Antique Sage & Calming Tea Wash */
   --bg-desk: #dfe4db;
@@ -35,27 +36,31 @@
   /* Layout dimensions */
   --header-height: 76px;
   --max-width: 1500px;
-  --max-width-readable: 860px;
+  --max-width-readable: 940px;
+  --color-reading: #2b332e;
+  --reading-weight: 400;
 }
 
 /* Inkwell (Dark) Theme Variables - Warm Obsidian & Warm Bronze */
 body.inkwell-theme {
-  --bg-desk: #0c0f17;
-  --bg-desk-gradient: radial-gradient(circle at 50% 30%, #161c28 0%, #080a10 100%);
-  --bg-header: rgba(18, 22, 34, 0.92);
+  --bg-desk: #0e1117;
+  --bg-desk-gradient: radial-gradient(circle at 50% 30%, #151821 0%, #0a0c10 100%);
+  --bg-header: rgba(18, 21, 28, 0.94);
   --bg-header-image: url('assets/inkwell-texture.png');
-  --bg-page: #141824;
+  --bg-page: #13151c;
   --bg-page-image: url('assets/inkwell-texture.png');
-  --bg-card: rgba(24, 30, 46, 0.55);
+  --bg-card: rgba(22, 26, 35, 0.65);
 
-  --color-text: #e2ded4;
-  --color-text-muted: #9ba3b0;
-  --color-accent: #6397c7;
-  --color-accent-hover: #82b0dd;
+  --color-text: #ded9cd;
+  --color-text-muted: #989da8;
+  --color-accent: #78a1c9;
+  --color-accent-hover: #9bbfe2;
   --color-gold: #c8a96e;
   --color-gold-bright: #e5c889;
-  --border-antique: #283042;
-  --shadow-color: rgba(0, 0, 0, 0.38);
+  --border-antique: #262a36;
+  --shadow-color: rgba(0, 0, 0, 0.42);
+  --color-reading: #cecac0;
+  --reading-weight: 400;
 }
 
 /* Espresso (Dark Roasted) Theme Variables - Deep Mocha & Roasted Amber */
@@ -733,6 +738,24 @@ body.espresso-theme .theme-btn {
   border: 1px solid #d4a373;
 }
 
+/* Typeface switcher classes */
+.font-switchers .theme-btn {
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+body.font-newsreader {
+  --font-reading: 'Newsreader', Georgia, serif;
+}
+
+body.font-garamond {
+  --font-reading: 'EB Garamond', Georgia, serif;
+}
+
+body.font-lora {
+  --font-reading: 'Lora', Georgia, serif;
+}
+
 .font-controls {
   display: flex;
   align-items: center;
@@ -801,6 +824,7 @@ body.espresso-theme .font-btn {
    ========================================================================== */
 #codex-container {
   width: 100%;
+  max-width: var(--max-width);
   padding: 0 2.5rem;
   margin: 2rem auto;
   flex-grow: 1;
@@ -811,8 +835,8 @@ body.espresso-theme .font-btn {
 
 #codex-page {
   background-color: var(--bg-page);
-  border: 1px solid var(--border-antique);
-  box-shadow: 0 4px 18px var(--shadow-color);
+  border: none;
+  box-shadow: none;
   border-radius: 6px;
   padding: 2.5rem 3rem;
   position: relative;
@@ -1617,22 +1641,137 @@ hr.codex-divider::after {
 
 .article-figure.medium,
 .article-image.medium {
-  max-width: 540px;
+  max-width: 620px;
 }
 
 .article-figure.large,
 .article-image.large {
-  max-width: 960px;
+  max-width: 100%;
+}
+
+/* Wide: always exactly the width of the text column */
+.article-image.wide {
+  width: 100%;
+}
+
+/* Portrait / square: one shared height so tall images never dominate */
+.article-image.portrait {
+  height: 520px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 figcaption {
-  margin-top: 0.75rem;
+  margin: 0.7rem auto 0;
+  max-width: 78%;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
   color: var(--color-text-muted);
   font-style: italic;
   text-align: center;
 }
+
+.article-video {
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
+  border-radius: 6px;
+  border: 1px solid var(--border-antique);
+  box-shadow: 0 4px 18px var(--shadow-color);
+  display: block;
+  margin: 0 auto;
+  background-color: #0b0e14;
+}
+
+.article-video-wrapper {
+  margin: 2.5rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+.article-video-wrapper.small {
+  max-width: 420px;
+}
+
+.article-video-wrapper.medium {
+  max-width: 640px;
+}
+
+/* Side-by-side figures (e.g. molecule comparisons): identical boxes */
+.article-duo-figures {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin: 2.5rem auto;
+}
+
+.article-duo-figures .article-figure {
+  margin: 0;
+  flex: 1 1 0;
+  max-width: 260px;
+}
+
+.article-duo-figures .article-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 1.25rem;
+  background-color: #f6f3eb;
+  border-radius: 6px;
+}
+
+body.inkwell-theme .article-duo-figures img {
+  background-color: #e5e0d5;
+  filter: brightness(0.92) contrast(1.02);
+}
+
+body.inkwell-theme .article-image {
+  background-color: transparent;
+}
+
+.article-duo-figures figcaption {
+  max-width: 100%;
+}
+
+/* Thinktank reading typography */
+.article-body {
+  font-family: var(--font-reading);
+  font-size: 1.12rem;
+  font-weight: var(--reading-weight, 400);
+  line-height: 1.88;
+  letter-spacing: 0.005em;
+  color: var(--color-reading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.article-body p {
+  margin-bottom: 1.55rem;
+}
+
+.article-body strong {
+  font-weight: 600;
+  color: #ded9cd;
+}
+
+body.inkwell-theme .article-body strong {
+  color: #eae5da;
+}
+
+.article-body h2 {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  margin-top: 2.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.6px;
+  color: var(--color-gold);
+  border-bottom: 1px solid var(--border-antique);
+  padding-bottom: 0.4rem;
+}
+
 
 .add-bookmark-container {
   display: flex;
@@ -2237,6 +2376,16 @@ body.inkwell-theme .article-sidenote {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+
+  .article-image.portrait {
+    width: auto !important;
+    height: auto !important;
+    max-height: 420px;
+  }
+
+  .article-duo-figures .article-image {
+    height: 140px !important;
   }
 
   .tl-point {

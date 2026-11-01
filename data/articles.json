@@ -44,6 +44,17 @@
     "contentFile": "content/thinktank/architecture-of-mercy.md"
   },
   {
+    "id": "the-nature-of-remembering",
+    "category": "thinktank",
+    "title": "The Nature of Remembering: Hoe metallofyten de aard van het herinneren weerspiegelen",
+    "date": "November 1, 2026",
+    "author": "Deniz Seyfeli",
+    "summary": "Een verkenning van de expositie in W139, normatieve herinneringspolitiek en de biochemie van hyperaccumulatoren.",
+    "image": "assets/w139-nature-of-remembering-poster.png",
+    "readTime": "9 min read",
+    "contentFile": "content/thinktank/the-nature-of-remembering.md"
+  },
+  {
     "id": "the-meaning-maker",
     "category": "stem",
     "title": "The Meaning-Maker: Redefining the CIO in an Age of Complexity",

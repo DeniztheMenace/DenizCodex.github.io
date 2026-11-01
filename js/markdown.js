@@ -134,18 +134,11 @@ export function parseMarkdown(markdown) {
         let src = match[2];
 
         let sizeClass = '';
-        if (src.includes('#small') || alt.endsWith('|small')) {
-          sizeClass = ' small';
-          src = src.replace('#small', '');
-          alt = alt.replace('|small', '');
-        } else if (src.includes('#medium') || alt.endsWith('|medium')) {
-          sizeClass = ' medium';
-          src = src.replace('#medium', '');
-          alt = alt.replace('|medium', '');
-        } else if (src.includes('#large') || alt.endsWith('|large')) {
-          sizeClass = ' large';
-          src = src.replace('#large', '');
-          alt = alt.replace('|large', '');
+        const sizeMatch = src.match(/#(small|medium|large|wide|portrait)$/) || alt.match(/\|(small|medium|large|wide|portrait)$/);
+        if (sizeMatch) {
+          sizeClass = ` ${sizeMatch[1]}`;
+          src = src.replace(/#(small|medium|large|wide|portrait)$/, '');
+          alt = alt.replace(/\|(small|medium|large|wide|portrait)$/, '');
         }
 
         const cleanAltAttr = alt.replace(/\[\^[^\]]+\]/g, '').replace(/"/g, '&quot;');
@@ -173,11 +166,11 @@ export function parseMarkdown(markdown) {
       continue;
     }
 
-    // Direct HTML blocks (like <aside> or custom <div>)
-    if (line.startsWith('<aside') || line.startsWith('<div')) {
+    // Direct HTML blocks (like <aside>, <div>, <figure>, <video>, or closing tags)
+    if (line.startsWith('<') && !line.startsWith('<!--')) {
       if (inList) { html += '</ul>\n'; inList = false; }
       if (inBlockquote) { html += '</blockquote>\n'; inBlockquote = false; }
-      html += `${line}\n`;
+      html += `${parseInline(line)}\n`;
       continue;
     }
 

@@ -154,7 +154,7 @@ class CodexApp {
   }
 
   showLanding() {
-    document.title = 'Deniz Codex | Deniz Seyfeli — Personal Thinktank & Archives';
+    document.title = 'Deniz Codex | Deniz Seyfeli - Personal Thinktank & Archives';
     this.reader.clearReaderState();
     const container = this.reader.pageContentEl;
 
@@ -288,7 +288,7 @@ class CodexApp {
       return;
     }
 
-    document.title = `${category.name} | Deniz Codex — Deniz Seyfeli`;
+    document.title = `${category.name} | Deniz Codex - Deniz Seyfeli`;
 
     const container = this.reader.pageContentEl;
     const catArticles = this.articles
@@ -330,7 +330,7 @@ class CodexApp {
         pointsHtml += `
           <div class="tl-point">
             <div class="tl-preview-card">
-              <div class="tl-preview-card-header">${yearLabel} — ${arts.length} ${arts.length === 1 ? 'entry' : 'entries'}</div>
+              <div class="tl-preview-card-header">${yearLabel} - ${arts.length} ${arts.length === 1 ? 'entry' : 'entries'}</div>
               <div class="tl-preview-rows">
                 ${rowsHtml}
               </div>
@@ -346,7 +346,7 @@ class CodexApp {
       if (catArticles.length === 0) {
         pointsHtml = `<div class="empty-chapter-state">
           <i data-lucide="scroll" style="width:40px;height:40px;color:var(--color-gold);margin-bottom:12px;"></i>
-          <p>Nothing here yet — entries will appear as they are written.</p>
+          <p>Nothing here yet - entries will appear as they are written.</p>
         </div>`;
       }
 
@@ -397,7 +397,7 @@ class CodexApp {
     if (catArticles.length === 0) {
       listHtml = `<div class="empty-chapter-state">
           <i data-lucide="scroll" style="width:40px;height:40px;color:var(--color-gold);margin-bottom:12px;"></i>
-          <p>Nothing here yet — entries will appear as they are written.</p>
+          <p>Nothing here yet - entries will appear as they are written.</p>
         </div>`;
     } else {
       listHtml = catArticles.map(art => renderArticleCard(art, this.categories)).join('');
@@ -431,7 +431,7 @@ class CodexApp {
       return;
     }
 
-    document.title = `${article.title} | Deniz Codex — Deniz Seyfeli`;
+    document.title = `${article.title} | Deniz Codex - Deniz Seyfeli`;
 
     if (article.category === 'historic-splice') {
       renderHistoricSplice(this, article, scrollPercent);
@@ -449,7 +449,7 @@ class CodexApp {
       return;
     }
 
-    document.title = `Search: "${query}" | Deniz Codex — Deniz Seyfeli`;
+    document.title = `Search: "${query}" | Deniz Codex - Deniz Seyfeli`;
 
     const matches = this.articles.filter(a =>
       a.title.toLowerCase().includes(query) ||
