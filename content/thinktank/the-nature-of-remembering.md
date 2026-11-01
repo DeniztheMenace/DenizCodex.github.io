@@ -4,7 +4,7 @@ Normatieve herinneringspolitiek is de strijd over hoe een samenleving ervoor kie
 
 Stel je de twintig meter hoge granieten gezichten van Washington, Jefferson, Roosevelt en Lincoln voor die uitkijken over de Black Hills in South Dakota. Voor miljoenen toeristen elk jaar is Mount Rushmore een ode aan de Amerikaanse grootheid. En toch, voor de Lakota Sioux, is diezelfde klif Tunkasila Sakpe (De Zes Grootvaders), heilige grond die door de Amerikaanse overheid werd geconfisqueerd in strijd met een verdrag uit 1868. Het uithakken van vier Amerikaanse presidenten in het gezicht van een voor de inheemse bevolking heilige berg is een voorbeeld van normatieve herinneringspolitiek in fysieke vorm, waarbij de ene beschaving letterlijk haar eigen oorsprongsverhaal over dat van een andere heen kerft.
 
-![Hoe (over)schrijven de ‘overwinnaars’ de geschiedenis?](assets/4186-15119.jpg#portrait)
+![Hoe (over)schrijven de ‘overwinnaars’ de geschiedenis?](assets/4186-15119.png#portrait)
 
 Co-experimentatie met milieu- en meer-dan-menselijke lichamen beschouwt de natuur en andere objecten als levende getuigen die de trauma's van de geschiedenis kunnen bijhouden als een co-auteur. Een sprekend voorbeeld hiervan zijn de jaarringen van een boom die grote gebeurtenissen gedurende zijn leven bijhoudt, zoals industriële vervuiling, bosbranden of droogte.
 
