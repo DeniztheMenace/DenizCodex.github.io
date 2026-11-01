@@ -36,11 +36,11 @@ De arsenaatmoleculen ($\text{AsO}_4^{3-}$) in met arseen verzadigde grond hebben
 <div class="article-duo-figures">
   <figure class="article-figure small">
     <img src="assets/chem-arsenate-structure.png" alt="Arsenaat (AsO4 3-)" class="article-image" />
-    <figcaption>Chemische samenstelling van arsenaat ($\text{AsO}_4^{3-}$)</figcaption>
+    <figcaption>Arsenaat ($\text{AsO}_4^{3-}$)</figcaption>
   </figure>
   <figure class="article-figure small">
     <img src="assets/chem-phosphate-structure.png" alt="Anorganisch fosfaat (PO4 3-)" class="article-image" />
-    <figcaption>Chemische samenstelling van anorganisch fosfaat ($\text{PO}_4^{3-}$)</figcaption>
+    <figcaption>Anorganisch fosfaat ($\text{PO}_4^{3-}$)</figcaption>
   </figure>
 </div>
 
