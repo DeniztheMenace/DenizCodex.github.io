@@ -60,7 +60,7 @@
     "title": "The Meaning-Maker: Redefining the CIO in an Age of Complexity",
     "date": "August 22, 2026",
     "author": "Deniz Seyfeli",
-    "summary": "From Bletchley Park indexers to modern AI transformation: how technology leaders shift from managing data architecture to collective meaning-making.",
+    "summary": "From Bletchley Park indexers to modern AI transformation, how technology leaders shift from managing data architecture to collective meaning-making.",
     "image": "assets/vintage-typewriter-code.jpg",
     "readTime": "7 min read",
     "contentFile": "content/stem/the-meaning-maker-redefining-the-cio.md"
@@ -71,7 +71,7 @@
     "title": "De geschiedenis van draadloze communicatie in zes generaties",
     "date": "August 22, 2026",
     "author": "Deniz Seyfeli",
-    "summary": "Van autotelefoons tot alles verbonden: een reis door de evolutie van mobiele netwerken, van 0G tot 6G.",
+    "summary": "Van autotelefoons tot alles verbonden: een reis door de evolutie van mobiele netwerken",
     "image": "assets/telecom-tower-sunset.jpg",
     "readTime": "10 min read",
     "contentFile": "content/stem/de-geschiedenis-van-draadloze-communicatie.md"
@@ -79,10 +79,10 @@
   {
     "id": "the-power-of-the-ellipse-spitfire",
     "category": "stem",
-    "title": "Structural & Aerodynamic Genius of the Spitfire",
+    "title": "Aerodynamic Brilliance of the Spitfire",
     "date": "August 29, 2026",
     "author": "Deniz Seyfeli",
-    "summary": "An in-depth exploration of R.J. Mitchell and Beverley Shenstone's aerodynamic masterwork.",
+    "summary": "An  exploration of R.J. Mitchell and Beverley Shenstone's aerodynamic masterwork.",
     "image": "assets/spitfire-duxford.jpg",
     "readTime": "12 min read",
     "contentFile": "content/stem/the-power-of-the-ellipse-spitfire.md"
